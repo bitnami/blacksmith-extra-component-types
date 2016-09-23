@@ -1,0 +1,35 @@
+{
+  "name": "blacksmith-extra-component-types",
+  "version": "0.0.1",
+  "description": "Additional blacksmith component types",
+  "main": "index.js",
+  "dependencies": {
+    "blacksmith-base-components": "bitnami/blacksmith-base-components#v0.0.6",
+    "nami-utils": "^0.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bitnami/blacksmith-extra-component-types.git"
+  },
+  "devDependencies": {
+    "eslint": "^2.11.1",
+    "eslint-config-bitnami": "^1.0.0",
+    "eslint-plugin-import": "^1.8.1",
+    "blacksmith-test": "bitnami/blacksmith-test#v0.0.8",
+    "chai": "^3.2.0",
+    "chai-fs": "git+https://github.com/bitnami/chai-fs.git",
+    "bitnami-gulp-common-tasks": "bitnami/gulp-common-tasks#v2.0.2",
+    "gulp": "^3.9.1"
+  },
+  "scripts": {
+    "lint": "gulp lint",
+    "test": "gulp test",
+    "ci-test": "gulp ci-test",
+    "ci-lint": "gulp ci-lint"
+  },
+  "keywords": [
+    "blacksmith"
+  ],
+  "author": "Bitnami",
+  "license": "GPL-2.0"
+}
