@@ -13,12 +13,12 @@
   },
   "devDependencies": {
     "eslint": "^2.11.1",
-    "eslint-config-bitnami": "^1.0.0",
+    "eslint-config-bitnami": "bitnami/eslint-config-bitnami#v1.0.0",
     "eslint-plugin-import": "^1.8.1",
     "blacksmith-test": "bitnami/blacksmith-test#v0.0.8",
     "chai": "^3.2.0",
     "chai-fs": "git+https://github.com/bitnami/chai-fs.git",
-    "bitnami-gulp-common-tasks": "bitnami/gulp-common-tasks#v2.0.2",
+    "bitnami-gulp-common-tasks": "bitnami/gulp-common-tasks#v2.0.3",
     "gulp": "^3.9.1"
   },
   "scripts": {

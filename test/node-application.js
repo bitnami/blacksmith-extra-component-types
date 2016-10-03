@@ -2,7 +2,6 @@
 
 const NodeApplication = require('../node-application');
 const path = require('path');
-const fs = require('fs');
 const helpers = require('blacksmith-test');
 const chai = require('chai');
 const chaiFs = require('chai-fs');
