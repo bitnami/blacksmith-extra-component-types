@@ -65,7 +65,7 @@ class RubyApplication extends CompilableComponent {
     this.sandbox.runProgram(nfile.join(this.be.prefixDir, 'ruby/bin/bundle'),
                                          args.concat('--no-deployment'), {cwd: this.prefix});
     this.sandbox.runProgram(nfile.join(this.be.prefixDir, 'ruby/bin/bundle'),
-                                         args.concat(['--deployment', '--force']), {cwd: this.prefix});
+                                         args.concat(['--deployment', '--path=vendor/bundle']), {cwd: this.prefix});
     if (options.installPassenger) {
       // Passenger first boot to download agent and Nginx
       this.sandbox.runProgram(nfile.join(this.be.prefixDir, 'ruby/bin/bundle'), ['exec', 'passenger', 'start'], {
