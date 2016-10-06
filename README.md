@@ -5,6 +5,7 @@
 This module contains the compilation logic to build:
  - Ruby Applications
  - Node Applications
+ - PHP Applications
 
 # About
 
