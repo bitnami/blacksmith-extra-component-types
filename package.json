@@ -18,7 +18,7 @@
     "blacksmith-test": "bitnami/blacksmith-test#v0.0.9",
     "chai": "^3.2.0",
     "chai-fs": "git+https://github.com/bitnami/chai-fs.git",
-    "bitnami-gulp-common-tasks": "bitnami/gulp-common-tasks#v2.0.3",
+    "bitnami-gulp-common-tasks": "bitnami/gulp-common-tasks#v2.0.4",
     "gulp": "^3.9.1"
   },
   "scripts": {
