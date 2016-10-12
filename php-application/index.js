@@ -4,8 +4,8 @@ const nfile = require('nami-utils').file;
 const CompilableComponent = require('blacksmith-base-components').CompilableComponent;
 
 /**
- * Class representing a Node Application
- * @namespace BaseComponents.NodeApplication
+ * Class representing a PHP Application
+ * @namespace BaseComponents.PHPApplication
  * @class
  * @extends CompilableComponent
  */
