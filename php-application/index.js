@@ -10,12 +10,17 @@ const CompilableComponent = require('blacksmith-base-components').CompilableComp
  * @extends CompilableComponent
  */
 class PHPApplication extends CompilableComponent {
-    build() {
-        console.log(this.prefix);
+  /**
+   * Install the PHP Application. Use composer to download and install
+   * dependencies if composer.json exists.
+   * @function BaseComponents.PHPAppliction~install
+   */
+  install() {
+    if (nfile.exists(nfile.join(this.workingDir, 'composer.json'))) {
+      const composerPath = nfile.join(this.be.prefixDir, 'php/bin/composer');
+      this.sandbox.runProgram(nfile.join(this.be.prefixDir, 'php/bin/php'), [composerPath, "install"]);
     }
-
-    install(options) {
-    }
+  }
 }
 
 module.exports = PHPApplication;
