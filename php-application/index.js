@@ -1,15 +1,16 @@
 'use strict';
 
 const nfile = require('nami-utils').file;
-const CompilableComponent = require('blacksmith-base-components').CompilableComponent;
+const nos = require('nami-utils').os;
+const CompiledComponent = require('blacksmith-base-components').CompiledComponent;
 
 /**
  * Class representing a PHP Application
  * @namespace BaseComponents.PHPApplication
  * @class
- * @extends CompilableComponent
+ * @extends CompiledComponent
  */
-class PHPApplication extends CompilableComponent {
+class PHPApplication extends CompiledComponent {
   /**
    * Install the PHP Application. Use composer to download and install
    * dependencies if composer.json exists.
@@ -18,8 +19,10 @@ class PHPApplication extends CompilableComponent {
   install() {
     if (nfile.exists(nfile.join(this.workingDir, 'composer.json'))) {
       const composerPath = nfile.join(this.be.prefixDir, 'php/bin/composer');
-      this.sandbox.runProgram(nfile.join(this.be.prefixDir, 'php/bin/php'), [composerPath, "install"]);
+      const opts = {cwd: this.workingDir, logger: this.logger};
+      nos.runProgram(nfile.join(this.be.prefixDir, 'php/bin/php'), [composerPath, "install"], opts);
     }
+    super.install();
   }
 }
 

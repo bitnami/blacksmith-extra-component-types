@@ -5,7 +5,9 @@ const helpers = require('blacksmith-test');
 const nfile = require('nami-utils').file;
 const path = require('path');
 const chai = require('chai');
+const chaiFs = require('chai-fs');
 const expect = chai.expect;
+chai.use(chaiFs);
 
 describe('PHP Application', () => {
   var be;
@@ -59,5 +61,24 @@ describe('PHP Application', () => {
       phpApplication.install();
       expect(log.text).to.not.contain('composer install');
     });
+  });
+
+  it('installs files to the target directory', () => {
+    phpApplication.setup({be});
+    phpApplication.cleanup();
+
+    const filename = 'sourcefile.php';
+
+    // Assert that the expected file does not exist
+    const installedFile = path.join(test.prefix, `${phpApplication.id}`, filename);
+    expect(installedFile).to.not.be.a.path();
+
+    // Create an empty file within the sandbox working directory
+    const sourceFile = path.join(test.sandbox, `${phpApplication.id}-${phpApplication.metadata.version}`, filename);
+    nfile.touch(sourceFile);
+
+    phpApplication.install();
+
+    expect(installedFile).to.be.a.path();
   });
 });
