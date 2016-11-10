@@ -20,7 +20,7 @@ class PHPApplication extends CompiledComponent {
     if (nfile.exists(nfile.join(this.workingDir, 'composer.json'))) {
       const composerPath = nfile.join(this.be.prefixDir, 'php/bin/composer');
       const opts = {cwd: this.workingDir, logger: this.logger};
-      nos.runProgram(nfile.join(this.be.prefixDir, 'php/bin/php'), [composerPath, "install"], opts);
+      nos.runProgram(nfile.join(this.be.prefixDir, 'php/bin/php'), [composerPath, 'install'], opts);
     }
     super.install();
   }

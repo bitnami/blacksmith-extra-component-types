@@ -10,10 +10,10 @@ const expect = chai.expect;
 chai.use(chaiFs);
 
 describe('PHP Application', () => {
-  var be;
-  var log;
-  var phpApplication;
-  var test;
+  let be;
+  let log;
+  let phpApplication;
+  let test;
 
   beforeEach('prepare environment', () => {
     helpers.cleanTestEnv();
@@ -46,7 +46,8 @@ describe('PHP Application', () => {
       phpApplication.cleanup();
 
       // Create an empty composer.json file
-      const composerFile = path.join(test.sandbox, `${phpApplication.id}-${phpApplication.metadata.version}`, 'composer.json');
+      const packageName = `${phpApplication.id}-${phpApplication.metadata.version}`;
+      const composerFile = path.join(test.sandbox, packageName, 'composer.json');
       nfile.touch(composerFile);
 
       phpApplication.install();
