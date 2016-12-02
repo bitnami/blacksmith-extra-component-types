@@ -49,8 +49,9 @@ describe('Node Application', function() {
     nodeApplication.fulfillLicenseRequirements();
     nodeApplication.postInstall();
     nodeApplication.minify();
-    expect(log.text).to.contain('npm ["install","--production","-no-optional"'); // default installation
-    expect(log.text).to.contain('npm ["install","--production","--test"'); // extra-args modified
-    expect(log.text).to.contain('npm ["install","test","--save"'); // Additional modules
+    expect(log.text).to.
+      contain('npm" "install" "--production" "-no-optional"');
+    expect(log.text).to.contain('npm" "install" "--production" "--test"');
+    expect(log.text).to.contain('npm" "install" "test" "--save"');
   });
 });
