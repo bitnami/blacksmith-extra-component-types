@@ -1,10 +1,10 @@
 {
   "name": "blacksmith-extra-component-types",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Additional blacksmith component types",
   "main": "index.js",
   "dependencies": {
-    "blacksmith-base-components": "bitnami/blacksmith-base-components#v0.0.14",
+    "blacksmith": "bitnami/blacksmith#v1.0.13",
     "nami-utils": "^0.2.0"
   },
   "repository": {

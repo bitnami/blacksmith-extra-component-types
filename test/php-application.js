@@ -1,7 +1,7 @@
 'use strict';
 
 const PHPApplication = require('../php-application');
-const helpers = require('blacksmith-test');
+const helpers = require('blacksmith/test/helpers');
 const nfile = require('nami-utils').file;
 const path = require('path');
 const chai = require('chai');

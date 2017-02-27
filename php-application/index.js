@@ -2,7 +2,7 @@
 
 const nfile = require('nami-utils').file;
 const nos = require('nami-utils').os;
-const CompiledComponent = require('blacksmith-base-components').CompiledComponent;
+const CompiledComponent = require('blacksmith/lib/base-components').CompiledComponent;
 
 /**
  * Class representing a PHP Application
