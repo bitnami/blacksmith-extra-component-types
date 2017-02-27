@@ -2,7 +2,7 @@
 
 const nfile = require('nami-utils').file;
 const _ = require('nami-utils/lodash-extra');
-const CompilableComponent = require('blacksmith-base-components').CompilableComponent;
+const CompilableComponent = require('blacksmith/lib/base-components').CompilableComponent;
 
 /**
  * Class representing a Node Application
