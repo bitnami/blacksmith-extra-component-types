@@ -15,11 +15,11 @@
     "eslint": "^2.11.1",
     "eslint-config-bitnami": "bitnami/eslint-config-bitnami#v1.0.0",
     "eslint-plugin-import": "^1.8.1",
-    "blacksmith-test": "bitnami/blacksmith-test#v0.0.9",
     "chai": "^3.2.0",
     "chai-fs": "git+https://github.com/bitnami/chai-fs.git",
     "bitnami-gulp-common-tasks": "bitnami/gulp-common-tasks#v2.0.4",
-    "gulp": "^3.9.1"
+    "gulp": "^3.9.1",
+    "nock": "^8.0.0"
   },
   "scripts": {
     "lint": "gulp lint",
