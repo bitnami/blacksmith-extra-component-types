@@ -12,6 +12,32 @@ const CompilableComponent = require('blacksmith/lib/base-components').Compilable
  * @extends CompilableComponent
  */
 class RubyApplication extends CompilableComponent {
+  get buildDependencies() {
+    const debianPackages = [
+      'imagemagick',
+      'ghostscript',
+      'libc6',
+      'libmagickwand-dev',
+      'libmysqlclient-dev',
+      'libpq-dev',
+      'libxml2-dev',
+      'libxslt1-dev',
+      'libgmp-dev',
+      'zlib1g-dev',
+    ];
+    return [
+      {
+        'type': 'nami',
+        'id': 'ruby',
+        'installCommands': ['bitnami-pkg install ruby-2.1.10-4'],
+        'envVars': {
+          PATH: '$PATH:/opt/bitnami/ruby/bin'
+        }
+      },
+    ].concat(_.map(debianPackages, pkg => {
+      return {'type': 'system', 'id': pkg, distro: 'debian'};
+    }));
+  }
   /**
    * Create prefix and copy source files
    * @function RubyApplication~build
