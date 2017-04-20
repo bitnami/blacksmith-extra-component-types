@@ -22,7 +22,7 @@ class NodeApplication extends CompilableComponent {
       {
         'type': 'nami',
         'id': 'node',
-        'installCommands': ['bitnami-pkg install node-4.8.2-0'],
+        'installCommands': ['bitnami-pkg install node-7.9.0-0'],
         'envVars': {
           PATH: '$PATH:/opt/bitnami/node/bin:/opt/bitnami/python/bin'
         }
