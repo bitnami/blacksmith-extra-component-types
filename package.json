@@ -1,10 +1,10 @@
 {
   "name": "blacksmith-extra-component-types",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Additional blacksmith component types",
   "main": "index.js",
   "dependencies": {
-    "blacksmith": "bitnami/blacksmith#v1.0.13",
+    "lodash": "^4.17.4",
     "nami-utils": "^0.2.0"
   },
   "repository": {
@@ -12,6 +12,7 @@
     "url": "https://github.com/bitnami/blacksmith-extra-component-types.git"
   },
   "devDependencies": {
+    "blacksmith": "bitnami/blacksmith#v1.0.13",
     "eslint": "^2.11.1",
     "eslint-config-bitnami": "bitnami/eslint-config-bitnami#v1.0.0",
     "eslint-plugin-import": "^1.8.1",

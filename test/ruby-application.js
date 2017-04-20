@@ -1,6 +1,8 @@
 'use strict';
 
+const _ = require('lodash');
 const RubyApplication = require('../ruby-application');
+const Ruby21Application = require('../ruby-application/ruby21');
 const path = require('path');
 const fs = require('fs');
 const helpers = require('blacksmith/test/helpers');
@@ -16,6 +18,13 @@ describe('Ruby Application', function() {
   });
   afterEach('clean environment', () => {
     helpers.cleanTestEnv();
+  });
+  it('should return its buildDependencies', () => {
+    const rubyApplication = new RubyApplication();
+    expect(_.map(rubyApplication.buildDependencies, bd => bd.id)).to.be.eql([
+      'ruby', 'imagemagick', 'ghostscript', 'libc6', 'libmagickwand-dev', 'libmysqlclient-dev', 'libpq-dev',
+      'libxml2-dev', 'libxslt1-dev', 'libgmp-dev', 'zlib1g-dev'
+    ]);
   });
   it('builds a sample ruby application', () => {
     const log = {};
@@ -72,5 +81,13 @@ describe('Ruby Application', function() {
     rubyApplication.postInstall();
     rubyApplication.minify();
     expect(path.join(test.prefix, component.id, 'log/passenger.3000.log')).to.not.be.a.path();
+  });
+});
+
+describe('Ruby21 Application', function() {
+  it('should return its buildDependencies', () => {
+    const rubyApplication = new Ruby21Application();
+    const rubyBuildDep = _.find(rubyApplication.buildDependencies, bd => bd.id === 'ruby');
+    expect(rubyBuildDep.installCommands[0]).to.match(/bitnami-pkg install ruby-2\.1\..*/);
   });
 });
