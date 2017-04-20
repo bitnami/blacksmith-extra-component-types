@@ -7,5 +7,6 @@ module.exports = {
   NodeApplication: require('./node-application'),
   Node4Application: require('./node-application/node4'),
   Node7Application: require('./node-application'),
-  PHPApplication: require('./php-application')
+  PHPApplication: require('./php-application'),
+  PeclComponent: require('./pecl-component')
 };
