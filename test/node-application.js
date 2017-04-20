@@ -1,5 +1,6 @@
 'use strict';
 
+const _ = require('lodash');
 const NodeApplication = require('../node-application');
 const path = require('path');
 const helpers = require('blacksmith/test/helpers');
@@ -15,6 +16,12 @@ describe('Node Application', function() {
   });
   afterEach('clean environment', () => {
     helpers.cleanTestEnv();
+  });
+  it('should return its buildDependencies', () => {
+    const nodeApplication = new NodeApplication();
+    expect(_.map(nodeApplication.buildDependencies, bd => bd.id)).to.be.eql([
+      'node', 'imagemagick', 'ghostscript', 'libc6', 'libmysqlclient18'
+    ]);
   });
   it('builds a sample node application', () => {
     const log = {};

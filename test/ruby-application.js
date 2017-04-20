@@ -1,5 +1,6 @@
 'use strict';
 
+const _ = require('lodash');
 const RubyApplication = require('../ruby-application');
 const path = require('path');
 const fs = require('fs');
@@ -16,6 +17,14 @@ describe('Ruby Application', function() {
   });
   afterEach('clean environment', () => {
     helpers.cleanTestEnv();
+  });
+  it('should return its buildDependencies', () => {
+    const rubyApplication = new RubyApplication();
+    console.log(_.map(rubyApplication.buildDependencies, bd => bd.id));
+    expect(_.map(rubyApplication.buildDependencies, bd => bd.id)).to.be.eql([
+      'ruby', 'imagemagick', 'ghostscript', 'libc6', 'libmagickwand-dev', 'libmysqlclient-dev', 'libpq-dev',
+      'libxml2-dev', 'libxslt1-dev', 'libgmp-dev', 'zlib1g-dev'
+    ]);
   });
   it('builds a sample ruby application', () => {
     const log = {};
