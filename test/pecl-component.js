@@ -1,6 +1,5 @@
 'use strict';
 
-const _ = require('lodash');
 const PHPApplication = require('../php-application');
 const PeclComponent = require('../pecl-component');
 const path = require('path');
