@@ -18,16 +18,14 @@ class NodeApplication extends CompilableComponent {
       'libc6',
       'libmysqlclient18',
     ];
-    return [
-      {
-        'type': 'nami',
-        'id': 'node',
-        'installCommands': ['bitnami-pkg install node-7.9.0-0'],
-        'envVars': {
-          PATH: '$PATH:/opt/bitnami/node/bin:/opt/bitnami/python/bin'
-        }
-      },
-    ].concat(_.map(debianPackages, pkg => {
+    return [{
+      'type': 'nami',
+      'id': 'node',
+      'installCommands': ['bitnami-pkg install node-7.9.0-0'],
+      'envVars': {
+        PATH: '$PATH:/opt/bitnami/node/bin:/opt/bitnami/python/bin'
+      }
+    }].concat(_.map(debianPackages, pkg => {
       return {'type': 'system', 'id': pkg, distro: 'debian'};
     }));
   }

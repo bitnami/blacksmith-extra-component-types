@@ -66,14 +66,15 @@ describe('PHP Application', () => {
   });
 
   it('should return its buildDependencies', () => {
-    expect(_.map(phpApplication.buildDependencies, bd => bd.id)).to.be.eql([
+    const phpRuntimeDependencies = [
       'php', 'libc6', 'zlib1g', 'libxslt1.1', 'libtidy-0.99-0', 'libreadline6', 'libncurses5', 'libtinfo5',
       'libmcrypt4', 'libldap-2.4-2', 'libstdc++6', 'libgmp10', 'libpng12-0', 'libjpeg62-turbo', 'libbz2-1.0', 'libxml2',
       'libssl1.0.0', 'libcurl3', 'libfreetype6', 'libicu52', 'libgcc1', 'libgcrypt20', 'libsasl2-2',
       'libgnutls-deb0-28', 'liblzma5', 'libidn11', 'librtmp1', 'libssh2-1', 'libgssapi-krb5-2', 'libkrb5-3',
       'libk5crypto3', 'libcomerr2', 'libgpg-error0', 'libp11-kit0', 'libtasn1-6', 'libnettle4', 'libhogweed2',
       'libkrb5support0', 'libkeyutils1', 'libffi6', 'libsybdb5', 'libpq5'
-    ]);
+    ];
+    expect(_.map(phpApplication.buildDependencies, bd => bd.id)).to.be.eql(phpRuntimeDependencies);
   });
 
   it('installs files to the target directory', () => {
