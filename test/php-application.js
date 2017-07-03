@@ -13,17 +13,11 @@ chai.use(chaiFs);
 describe('PHP Application', () => {
   let be;
   let log;
-  let phpApplication;
   let test;
 
-  beforeEach('prepare environment', () => {
-    helpers.cleanTestEnv();
-    log = {};
-    test = helpers.createTestEnv();
+  function createPHPComponent(RecipeClass) {
     const component = helpers.createComponent(test);
-    helpers.createDummyExecutable(path.join(test.prefix, 'php/bin/php'));
-    helpers.createDummyExecutable(path.join(test.prefix, 'php/bin/composer'));
-    phpApplication = new PHPApplication({
+    const phpApplication = new RecipeClass({
       id: component.id,
       version: component.version,
       licenses: [{
@@ -34,6 +28,14 @@ describe('PHP Application', () => {
     }, {logger: helpers.getDummyLogger(log)});
     phpApplication.id = component.id;
     phpApplication.sourceTarball = component.sourceTarball;
+    return phpApplication;
+  }
+  beforeEach('prepare environment', () => {
+    helpers.cleanTestEnv();
+    log = {};
+    test = helpers.createTestEnv();
+    helpers.createDummyExecutable(path.join(test.prefix, 'php/bin/php'));
+    helpers.createDummyExecutable(path.join(test.prefix, 'php/bin/composer'));
     be = helpers.getDummyBuildEnvironment(test);
   });
 
@@ -43,6 +45,7 @@ describe('PHP Application', () => {
 
   context('when composer.json present', () => {
     it('builds', () => {
+      const phpApplication = createPHPComponent(PHPApplication);
       phpApplication.setup({be});
       phpApplication.cleanup();
 
@@ -54,10 +57,30 @@ describe('PHP Application', () => {
       phpApplication.install();
       expect(log.text).to.contain('composer install');
     });
+    it('allows defining custom composer parameters', () => {
+      class CustomComposerApplication extends PHPApplication {
+        get composerInstallParameters() {
+          return super.composerInstallParameters.concat(['--no-dev']);
+        }
+      }
+
+      const phpApplication = createPHPComponent(CustomComposerApplication);
+      phpApplication.setup({be});
+      phpApplication.cleanup();
+
+      // Create an empty composer.json file
+      const packageName = `${phpApplication.id}-${phpApplication.metadata.version}`;
+      const composerFile = path.join(test.sandbox, packageName, 'composer.json');
+      nfile.touch(composerFile);
+
+      phpApplication.install();
+      expect(log.text).to.contain('composer install --no-dev');
+    });
   });
 
   context('when composer.json not present', () => {
     it('does not build', () => {
+      const phpApplication = createPHPComponent(PHPApplication);
       phpApplication.setup({be});
       phpApplication.cleanup();
       phpApplication.install();
@@ -66,6 +89,7 @@ describe('PHP Application', () => {
   });
 
   it('should return its buildDependencies', () => {
+    const phpApplication = createPHPComponent(PHPApplication);
     const phpRuntimeDependencies = [
       'php', 'libc6', 'zlib1g', 'libxslt1.1', 'libtidy-0.99-0', 'libreadline6', 'libncurses5', 'libtinfo5',
       'libmcrypt4', 'libldap-2.4-2', 'libstdc++6', 'libgmp10', 'libpng12-0', 'libjpeg62-turbo', 'libbz2-1.0', 'libxml2',
@@ -78,6 +102,7 @@ describe('PHP Application', () => {
   });
 
   it('installs files to the target directory', () => {
+    const phpApplication = createPHPComponent(PHPApplication);
     phpApplication.setup({be});
     phpApplication.cleanup();
 

@@ -71,6 +71,14 @@ class PHPApplication extends CompiledComponent {
   }
 
   /**
+   * When running composer install, append these paramaters to the command line arguments
+   * @returns {String[]}
+   */
+  get composerInstallParameters() {
+    return [];
+  }
+
+  /**
    * Install the PHP Application. Use composer to download and install
    * dependencies if composer.json exists.
    * @function BaseComponents.PHPAppliction~install
@@ -79,7 +87,12 @@ class PHPApplication extends CompiledComponent {
     if (nfile.exists(nfile.join(this.workingDir, 'composer.json'))) {
       const composerPath = nfile.join(this.be.prefixDir, 'php/bin/composer');
       const opts = {cwd: this.workingDir, logger: this.logger};
-      nos.runProgram(nfile.join(this.be.prefixDir, 'php/bin/php'), [composerPath, 'install'], opts);
+      const phpPath = nfile.join(this.be.prefixDir, 'php/bin/php');
+      let cmdArgs = [composerPath, 'install'];
+      if (this.composerInstallParameters.length) {
+        cmdArgs = cmdArgs.concat(this.composerInstallParameters);
+      }
+      nos.runProgram(phpPath, cmdArgs, opts);
     }
     super.install();
   }
