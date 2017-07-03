@@ -15,9 +15,9 @@ describe('PHP Application', () => {
   let log;
   let test;
 
-  function createPHPComponent(recipeClass) {
+  function createPHPComponent(RecipeClass) {
     const component = helpers.createComponent(test);
-    const phpApplication = new recipeClass({
+    const phpApplication = new RecipeClass({
       id: component.id,
       version: component.version,
       licenses: [{
