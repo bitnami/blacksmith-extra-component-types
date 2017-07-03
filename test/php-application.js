@@ -15,7 +15,7 @@ describe('PHP Application', () => {
   let log;
   let test;
 
-  function createTestRecipe(recipeClass) {
+  function createPHPComponent(recipeClass) {
     const component = helpers.createComponent(test);
     const phpApplication = new recipeClass({
       id: component.id,
@@ -45,7 +45,7 @@ describe('PHP Application', () => {
 
   context('when composer.json present', () => {
     it('builds', () => {
-      const phpApplication = createTestRecipe(PHPApplication);
+      const phpApplication = createPHPComponent(PHPApplication);
       phpApplication.setup({be});
       phpApplication.cleanup();
 
@@ -64,7 +64,7 @@ describe('PHP Application', () => {
         }
       }
 
-      const phpApplication = createTestRecipe(CustomComposerApplication);
+      const phpApplication = createPHPComponent(CustomComposerApplication);
       phpApplication.setup({be});
       phpApplication.cleanup();
 
@@ -80,7 +80,7 @@ describe('PHP Application', () => {
 
   context('when composer.json not present', () => {
     it('does not build', () => {
-      const phpApplication = createTestRecipe(PHPApplication);
+      const phpApplication = createPHPComponent(PHPApplication);
       phpApplication.setup({be});
       phpApplication.cleanup();
       phpApplication.install();
@@ -89,7 +89,7 @@ describe('PHP Application', () => {
   });
 
   it('should return its buildDependencies', () => {
-    const phpApplication = createTestRecipe(PHPApplication);
+    const phpApplication = createPHPComponent(PHPApplication);
     const phpRuntimeDependencies = [
       'php', 'libc6', 'zlib1g', 'libxslt1.1', 'libtidy-0.99-0', 'libreadline6', 'libncurses5', 'libtinfo5',
       'libmcrypt4', 'libldap-2.4-2', 'libstdc++6', 'libgmp10', 'libpng12-0', 'libjpeg62-turbo', 'libbz2-1.0', 'libxml2',
@@ -102,7 +102,7 @@ describe('PHP Application', () => {
   });
 
   it('installs files to the target directory', () => {
-    const phpApplication = createTestRecipe(PHPApplication);
+    const phpApplication = createPHPComponent(PHPApplication);
     phpApplication.setup({be});
     phpApplication.cleanup();
 
