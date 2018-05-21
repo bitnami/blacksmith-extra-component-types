@@ -4,6 +4,7 @@ const _ = require('lodash');
 const NodeApplication = require('../node-application');
 const Node4Application = require('../node-application/node4');
 const Node6Application = require('../node-application/node6');
+const Node8Application = require('../node-application/node8');
 const path = require('path');
 const helpers = require('blacksmith/test/helpers');
 const chai = require('chai');
@@ -78,5 +79,13 @@ describe('Node6 Application', function() {
     const nodeApplication = new Node6Application();
     const nodeBuildDep = _.find(nodeApplication.buildDependencies, bd => bd.id === 'node');
     expect(nodeBuildDep.installCommands[0]).to.match(/bitnami-pkg install node-6\..*/);
+  });
+});
+
+describe('Node8 Application', function() {
+  it('should return its buildDependencies', () => {
+    const nodeApplication = new Node8Application();
+    const nodeBuildDep = _.find(nodeApplication.buildDependencies, bd => bd.id === 'node');
+    expect(nodeBuildDep.installCommands[0]).to.match(/bitnami-pkg install node-8\..*/);
   });
 });
