@@ -2,7 +2,6 @@
 
 const _ = require('lodash');
 const NodeApplication = require('../node-application');
-const Node4Application = require('../node-application/node4');
 const Node6Application = require('../node-application/node6');
 const Node8Application = require('../node-application/node8');
 const Node9Application = require('../node-application/node9');
@@ -65,14 +64,6 @@ describe('Node Application', function() {
       contain('npm" "install" "--production" "-no-optional"');
     expect(log.text).to.contain('npm" "install" "--production" "--test"');
     expect(log.text).to.contain('npm" "install" "test" "--save"');
-  });
-});
-
-describe('Node4 Application', function() {
-  it('should return its buildDependencies', () => {
-    const nodeApplication = new Node4Application();
-    const nodeBuildDep = _.find(nodeApplication.buildDependencies, bd => bd.id === 'node');
-    expect(nodeBuildDep.installCommands[0]).to.match(/bitnami-pkg install node-4\..*/);
   });
 });
 
