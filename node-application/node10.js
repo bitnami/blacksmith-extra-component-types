@@ -10,7 +10,7 @@ const NodeApplication = require('./index');
  * @extends NodeApplication
  */
 class Node10Application extends NodeApplication {
-  nodeVersion() => { return '10.1.0-0'; }
+  nodeVersion() { return '10.1.0-0'; }
 }
 
 module.exports = Node10Application;
