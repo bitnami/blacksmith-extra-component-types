@@ -1,6 +1,5 @@
 'use strict';
 
-const _ = require('nami-utils/lodash-extra');
 const NodeApplication = require('./index');
 
 /**
