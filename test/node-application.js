@@ -2,8 +2,10 @@
 
 const _ = require('lodash');
 const NodeApplication = require('../node-application');
-const Node4Application = require('../node-application/node4');
 const Node6Application = require('../node-application/node6');
+const Node8Application = require('../node-application/node8');
+const Node9Application = require('../node-application/node9');
+const Node10Application = require('../node-application/node10');
 const path = require('path');
 const helpers = require('blacksmith/test/helpers');
 const chai = require('chai');
@@ -65,18 +67,34 @@ describe('Node Application', function() {
   });
 });
 
-describe('Node4 Application', function() {
-  it('should return its buildDependencies', () => {
-    const nodeApplication = new Node4Application();
-    const nodeBuildDep = _.find(nodeApplication.buildDependencies, bd => bd.id === 'node');
-    expect(nodeBuildDep.installCommands[0]).to.match(/bitnami-pkg install node-4\..*/);
-  });
-});
-
 describe('Node6 Application', function() {
   it('should return its buildDependencies', () => {
     const nodeApplication = new Node6Application();
     const nodeBuildDep = _.find(nodeApplication.buildDependencies, bd => bd.id === 'node');
     expect(nodeBuildDep.installCommands[0]).to.match(/bitnami-pkg install node-6\..*/);
+  });
+});
+
+describe('Node8 Application', function() {
+  it('should return its buildDependencies', () => {
+    const nodeApplication = new Node8Application();
+    const nodeBuildDep = _.find(nodeApplication.buildDependencies, bd => bd.id === 'node');
+    expect(nodeBuildDep.installCommands[0]).to.match(/bitnami-pkg install node-8\..*/);
+  });
+});
+
+describe('Node9 Application', function() {
+  it('should return its buildDependencies', () => {
+    const nodeApplication = new Node9Application();
+    const nodeBuildDep = _.find(nodeApplication.buildDependencies, bd => bd.id === 'node');
+    expect(nodeBuildDep.installCommands[0]).to.match(/bitnami-pkg install node-9\..*/);
+  });
+});
+
+describe('Node10 Application', function() {
+  it('should return its buildDependencies', () => {
+    const nodeApplication = new Node10Application();
+    const nodeBuildDep = _.find(nodeApplication.buildDependencies, bd => bd.id === 'node');
+    expect(nodeBuildDep.installCommands[0]).to.match(/bitnami-pkg install node-10\..*/);
   });
 });

@@ -1,6 +1,5 @@
 'use strict';
 
-const _ = require('nami-utils/lodash-extra');
 const NodeApplication = require('./index');
 
 /**
@@ -10,12 +9,7 @@ const NodeApplication = require('./index');
  * @extends NodeApplication
  */
 class Node6Application extends NodeApplication {
-  get buildDependencies() {
-    const nodeApplicationBD = super.buildDependencies;
-    const node = _.find(nodeApplicationBD, {id: 'node'});
-    node.installCommands = ['bitnami-pkg install node-6.11.1-0'];
-    return nodeApplicationBD;
-  }
+  nodeVersion() { return '6.14.2-0'; }
 }
 
 module.exports = Node6Application;
