@@ -21,7 +21,7 @@ class NodeApplication extends CompilableComponent {
     return [{
       'type': 'nami',
       'id': 'node',
-      'installCommands': ['bitnami-pkg install node-7.9.0-0'],
+      'installCommands': [`bitnami-pkg install node-${this.nodeVersion()}`],
       'envVars': {
         PATH: '$PATH:/opt/bitnami/node/bin:/opt/bitnami/python/bin'
       }
@@ -29,6 +29,16 @@ class NodeApplication extends CompilableComponent {
       return {'type': 'system', 'id': pkg, distro: 'debian'};
     }));
   }
+
+  /**
+   * Node version to build
+   * @function NodeApplication~nodeVersion
+   * @returns {String} Node version to build.
+   */
+  nodeVersion() {
+    return '7.10.1-0';
+  }
+
   /**
    * Create prefix and copy source files
    * @function NodeApplication~build

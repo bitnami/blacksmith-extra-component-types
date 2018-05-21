@@ -7,8 +7,10 @@ module.exports = {
   NodeApplication: require('./node-application'),
   Node4Application: require('./node-application/node4'),
   Node6Application: require('./node-application/node6'),
-  Node8Application: require('./node-application/node8'),
   Node7Application: require('./node-application'),
+  Node8Application: require('./node-application/node8'),
+  Node9Application: require('./node-application/node9'),
+  Node10Application: require('./node-application/node10'),
   PHPApplication: require('./php-application'),
   PeclComponent: require('./pecl-component')
 };

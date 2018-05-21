@@ -10,12 +10,7 @@ const NodeApplication = require('./index');
  * @extends NodeApplication
  */
 class Node8Application extends NodeApplication {
-  get buildDependencies() {
-    const nodeApplicationBD = super.buildDependencies;
-    const node = _.find(nodeApplicationBD, {id: 'node'});
-    node.installCommands = ['bitnami-pkg install node-8.11.1-0'];
-    return nodeApplicationBD;
-  }
+  nodeVersion() => { return '8.11.1-0'; }
 }
 
 module.exports = Node8Application;

@@ -10,12 +10,7 @@ const NodeApplication = require('./index');
  * @extends NodeApplication
  */
 class Node4Application extends NodeApplication {
-  get buildDependencies() {
-    const nodeApplicationBD = super.buildDependencies;
-    const node = _.find(nodeApplicationBD, {id: 'node'});
-    node.installCommands = ['bitnami-pkg install node-4.8.2-0'];
-    return nodeApplicationBD;
-  }
+  nodeVersion() => { return '4.8.2-0'; }
 }
 
-module.exports = Node4Application;
+Module.exports = Node4Application;
