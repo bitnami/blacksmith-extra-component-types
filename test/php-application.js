@@ -90,15 +90,34 @@ describe('PHP Application', () => {
 
   it('should return its buildDependencies', () => {
     const phpApplication = createPHPComponent(PHPApplication);
-    const phpRuntimeDependencies = [
-      'php', 'libc6', 'zlib1g', 'libxslt1.1', 'libtidy-0.99-0', 'libreadline6', 'libncurses5', 'libtinfo5',
-      'libmcrypt4', 'libldap-2.4-2', 'libstdc++6', 'libgmp10', 'libpng12-0', 'libjpeg62-turbo', 'libbz2-1.0', 'libxml2',
-      'libssl1.0.0', 'libcurl3', 'libfreetype6', 'libicu52', 'libgcc1', 'libgcrypt20', 'libsasl2-2',
-      'libgnutls-deb0-28', 'liblzma5', 'libidn11', 'librtmp1', 'libssh2-1', 'libgssapi-krb5-2', 'libkrb5-3',
-      'libk5crypto3', 'libcomerr2', 'libgpg-error0', 'libp11-kit0', 'libtasn1-6', 'libnettle4', 'libhogweed2',
-      'libkrb5support0', 'libkeyutils1', 'libffi6', 'libsybdb5', 'libpq5'
-    ];
-    expect(_.map(phpApplication.buildDependencies, bd => bd.id)).to.be.eql(phpRuntimeDependencies);
+    const phpRuntimeDependencies = {
+      debian: [
+        'libbz2-1.0', 'libc6', 'libcomerr2', 'libcurl3', 'libffi6', 'libfreetype6', 'libgcc1', 'libgcrypt20',
+        'libgmp10', 'libgnutls-deb0-28', 'libgpg-error0', 'libgssapi-krb5-2', 'libhogweed2', 'libicu52',
+        'libidn11', 'libjpeg62-turbo', 'libk5crypto3', 'libkeyutils1', 'libkrb5-3', 'libkrb5support0',
+        'libldap-2.4-2', 'liblzma5', 'libmcrypt4', 'libncurses5', 'libnettle4', 'libp11-kit0', 'libpng12-0',
+        'libpq5', 'libreadline6', 'librtmp1', 'libsasl2-2', 'libssh2-1', 'libssl1.0.0', 'libstdc++6',
+        'libsybdb5', 'libtasn1-6', 'libtidy-0.99-0', 'libtinfo5', 'libxml2', 'libxslt1.1', 'zlib1g',
+      ],
+      centos: [
+        'bzip2-libs', 'cyrus-sasl-lib', 'freetype', 'glibc', 'gmp', 'keyutils-libs', 'krb5-libs', 'libcom_err',
+        'libcurl', 'libgcc', 'libgcrypt', 'libgpg-error', 'libicu', 'libidn', 'libjpeg-turbo', 'libpng',
+        'libselinux', 'libssh2', 'libstdc++', 'libxml2', 'libxslt', 'ncurses-libs', 'nspr', 'nss', 'nss-softokn-freebl',
+        'nss-util', 'openldap', 'openssl-libs', 'pcre', 'postgresql-libs', 'readline', 'xz-libs', 'zlib',
+      ],
+    };
+    phpRuntimeDependencies.rhel = phpRuntimeDependencies.centos;
+    phpRuntimeDependencies.ol = phpRuntimeDependencies.centos;
+
+    const getBuildDependencies = (deps, distro) => _.map(_.filter(deps, bd => bd.distro === distro), bd => bd.id);
+    const phpBuildDependencies = {
+      debian: getBuildDependencies(phpApplication.buildDependencies, 'debian'),
+      centos: getBuildDependencies(phpApplication.buildDependencies, 'centos'),
+      rhel: getBuildDependencies(phpApplication.buildDependencies, 'rhel'),
+      ol: getBuildDependencies(phpApplication.buildDependencies, 'ol'),
+    };
+
+    expect(phpBuildDependencies).to.be.eql(phpRuntimeDependencies);
   });
 
   it('installs files to the target directory', () => {
