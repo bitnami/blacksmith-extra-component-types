@@ -29,7 +29,7 @@ class RubyApplication extends CompilableComponent {
       {
         'type': 'nami',
         'id': 'ruby',
-        'installCommands': ['bitnami-pkg install ruby-2.3.4-0'],
+        'installCommands': ['bitnami-pkg install ruby-2.3.7-0'],
         'envVars': {
           PATH: '$PATH:/opt/bitnami/ruby/bin'
         }
