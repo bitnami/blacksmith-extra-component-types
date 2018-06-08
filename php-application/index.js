@@ -16,7 +16,7 @@ class PHPApplication extends CompiledComponent {
     const modules = [{
       'type': 'nami',
       'id': 'php',
-      'installCommands': ['bitnami-pkg install php-7.0.30-3'],
+      'installCommands': ['bitnami-pkg install php-7.0.30-5'],
       'envVars': {
         PATH: '$PATH:/opt/bitnami/php/bin'
       }
