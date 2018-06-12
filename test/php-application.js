@@ -107,7 +107,13 @@ describe('PHP Application', () => {
       ],
     };
     phpRuntimeDependencies.rhel = phpRuntimeDependencies.centos;
-    phpRuntimeDependencies.ol = phpRuntimeDependencies.centos;
+    phpRuntimeDependencies.ol = phpRuntimeDependencies.centos.concat([
+      'libmcrypt-devel',
+      'freetds-devel',
+      'fgci-devel',
+      'libtidy-devel',
+      'libpqxx-dev',
+    ]);
 
     const getBuildDependencies = (deps, distro) => _.map(_.filter(deps, bd => bd.distro === distro), bd => bd.id);
     const phpBuildDependencies = {

@@ -103,7 +103,13 @@ class PHPApplication extends CompiledComponent {
       ],
     };
     systemPackages.rhel = systemPackages.centos;
-    systemPackages.ol = systemPackages.centos;
+    systemPackages.ol = systemPackages.centos.concat([
+      'libmcrypt-devel',
+      'freetds-devel',
+      'fgci-devel',
+      'libtidy-devel',
+      'libpqxx-dev',
+    ]);
 
     const packages = _.map(systemPackages, (pkgList, distro) => {
       return _.map(pkgList, (pkg) => {
