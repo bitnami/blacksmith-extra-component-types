@@ -3,6 +3,9 @@
 const _ = require('lodash');
 const RubyApplication = require('../ruby-application');
 const Ruby21Application = require('../ruby-application/ruby21');
+const Ruby21Application = require('../ruby-application/ruby22');
+const Ruby21Application = require('../ruby-application/ruby24');
+const Ruby21Application = require('../ruby-application/ruby25');
 const path = require('path');
 const fs = require('fs');
 const helpers = require('blacksmith/test/helpers');
@@ -89,5 +92,29 @@ describe('Ruby21 Application', function() {
     const rubyApplication = new Ruby21Application();
     const rubyBuildDep = _.find(rubyApplication.buildDependencies, bd => bd.id === 'ruby');
     expect(rubyBuildDep.installCommands[0]).to.match(/bitnami-pkg install ruby-2\.1\..*/);
+  });
+});
+
+describe('Ruby22 Application', function() {
+  it('should return its buildDependencies', () => {
+    const rubyApplication = new Ruby22Application();
+    const rubyBuildDep = _.find(rubyApplication.buildDependencies, bd => bd.id === 'ruby');
+    expect(rubyBuildDep.installCommands[0]).to.match(/bitnami-pkg install ruby-2\.2\..*/);
+  });
+});
+
+describe('Ruby24 Application', function() {
+  it('should return its buildDependencies', () => {
+    const rubyApplication = new Ruby24Application();
+    const rubyBuildDep = _.find(rubyApplication.buildDependencies, bd => bd.id === 'ruby');
+    expect(rubyBuildDep.installCommands[0]).to.match(/bitnami-pkg install ruby-2\.4\..*/);
+  });
+});
+
+describe('Ruby25 Application', function() {
+  it('should return its buildDependencies', () => {
+    const rubyApplication = new Ruby25Application();
+    const rubyBuildDep = _.find(rubyApplication.buildDependencies, bd => bd.id === 'ruby');
+    expect(rubyBuildDep.installCommands[0]).to.match(/bitnami-pkg install ruby-2\.5\..*/);
   });
 });

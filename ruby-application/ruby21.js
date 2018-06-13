@@ -1,6 +1,5 @@
 'use strict';
 
-const _ = require('nami-utils/lodash-extra');
 const RubyApplication = require('./index');
 
 /**
@@ -10,12 +9,7 @@ const RubyApplication = require('./index');
  * @extends rubyApplication
  */
 class Ruby21Application extends RubyApplication {
-  get buildDependencies() {
-    const rubyApplicationBD = super.buildDependencies;
-    const ruby = _.find(rubyApplicationBD, {id: 'ruby'});
-    ruby.installCommands = ['bitnami-pkg install ruby-2.1.10-4'];
-    return rubyApplicationBD;
-  }
+  rubyVersion() { return '2.1.10-5'; }
 }
 
 module.exports = Ruby21Application;
