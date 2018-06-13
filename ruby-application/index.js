@@ -29,7 +29,7 @@ class RubyApplication extends CompilableComponent {
       {
         'type': 'nami',
         'id': 'ruby',
-        'installCommands': ['bitnami-pkg install ruby-2.3.7-0'],
+        'installCommands': [`bitnami-pkg install ruby-${this.rubyVersion()}`],
         'envVars': {
           PATH: '$PATH:/opt/bitnami/ruby/bin'
         }
@@ -38,6 +38,16 @@ class RubyApplication extends CompilableComponent {
       return {'type': 'system', 'id': pkg, distro: 'debian'};
     }));
   }
+
+  /**
+   * Ruby version to build
+   * @function RubyApplication~rubyVersion
+   * @returns {String} Ruby version to build.
+   */
+  rubyVersion() {
+    return '2.3.7-0';
+  }
+
   /**
    * Create prefix and copy source files
    * @function RubyApplication~build
