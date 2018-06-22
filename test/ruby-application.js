@@ -72,7 +72,6 @@ describe('Ruby Application', function() {
       'Passenger core online'
     );
     rubyApplication.install();
-    expect(log.text).to.contain('"config" "build.nokogiri" "--use-system-libraries"'); // Configure nokogiri if present
     expect(log.text).to.contain('"install" "--binstubs" "--without" "development" "sqlite" "test" "--no-deployment"');
     expect(log.text).to.contain('"install" "--binstubs" "--without" "development" "sqlite" "test" "--deployment"');
     expect(log.text).to.contain('"exec" "passenger" "start"');

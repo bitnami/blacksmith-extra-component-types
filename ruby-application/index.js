@@ -93,11 +93,6 @@ class RubyApplication extends CompilableComponent {
       {atNewLine: true});
     }
     const args = ['install', '--binstubs', '--without'].concat(options.exclude);
-    // Nokogiri requires to use the system libraries
-    if (nfile.contains(nfile.join(this.prefix, 'Gemfile'), 'nokogiri')) {
-      this.sandbox.runProgram(nfile.join(this.be.prefixDir, 'ruby/bin/bundle'),
-                                         ['config', 'build.nokogiri', '--use-system-libraries'], {cwd: this.prefix});
-    }
     this.sandbox.runProgram(nfile.join(this.be.prefixDir, 'ruby/bin/bundle'),
                                          args.concat('--no-deployment'), {cwd: this.prefix});
     this.sandbox.runProgram(nfile.join(this.be.prefixDir, 'ruby/bin/bundle'),
