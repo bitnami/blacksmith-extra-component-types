@@ -25,8 +25,9 @@ describe('Node Application', function() {
     const nodeApplication = new NodeApplication();
     expect(_.map(_.filter(nodeApplication.buildDependencies,
       bd => !bd.version || bd.version === 9), bd => bd.id)).to.be.eql([
-      'node', 'imagemagick', 'ghostscript', 'libc6', 'default-libmysqlclient-dev'
-    ]);
+        'node', 'imagemagick', 'ghostscript', 'libc6', 'default-libmysqlclient-dev',
+      ]
+    );
   });
   it('builds a sample node application', () => {
     const log = {};
