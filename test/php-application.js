@@ -129,8 +129,8 @@ describe('PHP Application', () => {
       (!version || !bd.version || version === bd.version)), bd => bd.id);
 
     const phpBuildDependencies = {
-      'debian-8': getBuildDependencies(phpApplication.buildDependencies, 'debian', 8),
-      'debian-9': getBuildDependencies(phpApplication.buildDependencies, 'debian', 9),
+      'debian-8': getBuildDependencies(phpApplication.buildDependencies, 'debian', '8'),
+      'debian-9': getBuildDependencies(phpApplication.buildDependencies, 'debian', '9'),
       centos: getBuildDependencies(phpApplication.buildDependencies, 'centos'),
       rhel: getBuildDependencies(phpApplication.buildDependencies, 'rhel'),
       ol: getBuildDependencies(phpApplication.buildDependencies, 'ol'),
