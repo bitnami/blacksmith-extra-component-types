@@ -91,13 +91,23 @@ describe('PHP Application', () => {
   it('should return its buildDependencies', () => {
     const phpApplication = createPHPComponent(PHPApplication);
     const phpRuntimeDependencies = {
-      debian: [
+      'debian-8': [
         'libbz2-1.0', 'libc6', 'libcomerr2', 'libcurl3', 'libffi6', 'libfreetype6', 'libgcc1', 'libgcrypt20',
-        'libgmp10', 'libgnutls-deb0-28', 'libgpg-error0', 'libgssapi-krb5-2', 'libhogweed2', 'libicu52',
+        'libgmp10', 'libgpg-error0', 'libgssapi-krb5-2',
         'libidn11', 'libjpeg62-turbo', 'libk5crypto3', 'libkeyutils1', 'libkrb5-3', 'libkrb5support0',
-        'libldap-2.4-2', 'liblzma5', 'libmcrypt4', 'libncurses5', 'libnettle4', 'libp11-kit0', 'libpng12-0',
-        'libpq5', 'libreadline6', 'librtmp1', 'libsasl2-2', 'libssh2-1', 'libssl1.0.0', 'libstdc++6',
-        'libsybdb5', 'libtasn1-6', 'libtidy-0.99-0', 'libtinfo5', 'libxml2', 'libxslt1.1', 'zlib1g',
+        'libldap-2.4-2', 'liblzma5', 'libmcrypt4', 'libncurses5', 'libp11-kit0',
+        'libpq5', 'libreadline-dev', 'librtmp1', 'libsasl2-2', 'libssh2-1', 'libstdc++6',
+        'libsybdb5', 'libtasn1-6', 'libtinfo5', 'libxml2', 'libxslt1.1', 'zlib1g', 'libgnutls-deb0-28', 'libhogweed2',
+        'libicu52', 'libnettle4', 'libssl1.0.0', 'libtidy-0.99-0', 'libpng12-0'
+      ],
+      'debian-9': [
+        'libbz2-1.0', 'libc6', 'libcomerr2', 'libcurl3', 'libffi6', 'libfreetype6', 'libgcc1', 'libgcrypt20',
+        'libgmp10', 'libgpg-error0', 'libgssapi-krb5-2',
+        'libidn11', 'libjpeg62-turbo', 'libk5crypto3', 'libkeyutils1', 'libkrb5-3', 'libkrb5support0',
+        'libldap-2.4-2', 'liblzma5', 'libmcrypt4', 'libncurses5', 'libp11-kit0',
+        'libpq5', 'libreadline-dev', 'librtmp1', 'libsasl2-2', 'libssh2-1', 'libstdc++6',
+        'libsybdb5', 'libtasn1-6', 'libtinfo5', 'libxml2', 'libxslt1.1', 'zlib1g',
+        'libgnutls28-dev', 'libhogweed4', 'libicu57', 'nettle-dev', 'libssl1.0-dev', 'libtidy-dev', 'libpng-dev'
       ],
       centos: [
         'bzip2-libs', 'cyrus-sasl-lib', 'freetype', 'glibc', 'gmp', 'keyutils-libs', 'krb5-libs', 'libcom_err',
@@ -115,9 +125,12 @@ describe('PHP Application', () => {
       'libpqxx-dev',
     ]);
 
-    const getBuildDependencies = (deps, distro) => _.map(_.filter(deps, bd => bd.distro === distro), bd => bd.id);
+    const getBuildDependencies = (deps, distro, version) => _.map(_.filter(deps, bd => bd.distro === distro &&
+      (!version || !bd.version || version === bd.version)), bd => bd.id);
+
     const phpBuildDependencies = {
-      debian: getBuildDependencies(phpApplication.buildDependencies, 'debian'),
+      'debian-8': getBuildDependencies(phpApplication.buildDependencies, 'debian', 8),
+      'debian-9': getBuildDependencies(phpApplication.buildDependencies, 'debian', 9),
       centos: getBuildDependencies(phpApplication.buildDependencies, 'centos'),
       rhel: getBuildDependencies(phpApplication.buildDependencies, 'rhel'),
       ol: getBuildDependencies(phpApplication.buildDependencies, 'ol'),

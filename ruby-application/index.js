@@ -18,12 +18,25 @@ class RubyApplication extends CompilableComponent {
       'ghostscript',
       'libc6',
       'libmagickwand-dev',
-      'libmysqlclient-dev',
       'libpq-dev',
       'libxml2-dev',
       'libxslt1-dev',
       'libgmp-dev',
       'zlib1g-dev',
+    ];
+    const debianSpecialDeps = [
+      {
+        type: 'system',
+        id: 'libmysqlclient18',
+        distro: 'debian',
+        version: 8,
+      },
+      {
+        type: 'system',
+        id: 'default-libmysqlclient-dev',
+        distro: 'debian',
+        version: 9,
+      },
     ];
     return [
       {
@@ -36,7 +49,7 @@ class RubyApplication extends CompilableComponent {
       },
     ].concat(_.map(debianPackages, pkg => {
       return {'type': 'system', 'id': pkg, distro: 'debian'};
-    }));
+    })).concat(debianSpecialDeps);
   }
 
   /**
