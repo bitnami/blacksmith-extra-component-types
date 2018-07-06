@@ -16,7 +16,7 @@ class NodeApplication extends CompilableComponent {
       'imagemagick',
       'ghostscript',
       'libc6',
-      'libmysqlclient18',
+      'default-libmysqlclient-dev',
     ];
     return [{
       'type': 'nami',
