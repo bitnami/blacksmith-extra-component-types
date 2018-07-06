@@ -27,8 +27,8 @@ describe('Ruby Application', function() {
     const rubyApplication = new RubyApplication();
     expect(_.map(_.filter(rubyApplication.buildDependencies, bd => !bd.version || bd.version === 9),
       bd => bd.id)).to.be.eql([
-        'ruby', 'imagemagick', 'ghostscript', 'libc6', 'libmagickwand-dev', 'default-libmysqlclient-dev', 'libpq-dev',
-        'libxml2-dev', 'libxslt1-dev', 'libgmp-dev', 'zlib1g-dev',
+        'ruby', 'imagemagick', 'ghostscript', 'libc6', 'libmagickwand-dev', 'libpq-dev',
+        'libxml2-dev', 'libxslt1-dev', 'libgmp-dev', 'zlib1g-dev', 'default-libmysqlclient-dev',
       ]
     );
   });

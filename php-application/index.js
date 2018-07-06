@@ -46,7 +46,6 @@ class PHPApplication extends CompiledComponent {
         'libmcrypt4',
         'libncurses5',
         'libp11-kit0',
-        'libpng12-0',
         'libpq5',
         'libreadline-dev',
         'librtmp1',
@@ -166,6 +165,18 @@ class PHPApplication extends CompiledComponent {
       {
         type: 'system',
         id: 'libtidy-dev',
+        distro: 'debian',
+        version: 9,
+      },
+      {
+        type: 'system',
+        id: 'libpng12-0',
+        distro: 'debian',
+        version: 8,
+      },
+      {
+        type: 'system',
+        id: 'libpng-dev',
         distro: 'debian',
         version: 9,
       },

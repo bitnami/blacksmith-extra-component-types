@@ -18,7 +18,6 @@ class RubyApplication extends CompilableComponent {
       'ghostscript',
       'libc6',
       'libmagickwand-dev',
-      'default-libmysqlclient-dev',
       'libpq-dev',
       'libxml2-dev',
       'libxslt1-dev',
