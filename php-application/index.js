@@ -82,7 +82,7 @@ class PHPApplication extends CompiledComponent {
         'libicu',
         'libidn',
         'libjpeg-turbo',
-        'libpng-dev',
+        'libpng',
         'libselinux',
         'libssh2',
         'libstdc++',
