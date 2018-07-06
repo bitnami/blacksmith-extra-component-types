@@ -29,13 +29,13 @@ class RubyApplication extends CompilableComponent {
         type: 'system',
         id: 'libmysqlclient18',
         distro: 'debian',
-        version: 8,
+        version: '8',
       },
       {
         type: 'system',
         id: 'default-libmysqlclient-dev',
         distro: 'debian',
-        version: 9,
+        version: '9',
       },
     ];
     return [
