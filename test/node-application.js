@@ -23,7 +23,7 @@ describe('Node Application', function() {
   });
   it('should return its buildDependencies', () => {
     const nodeApplication = new NodeApplication();
-    expect(_.map(nodeApplication.buildDependencies, bd => bd.id)).to.be.eql([
+    expect(_.map(_.filter(nodeApplication.buildDependencies, bd => !bd.version || bd.version == 9), bd => bd.id)).to.be.eql([
       'node', 'imagemagick', 'ghostscript', 'libc6', 'default-libmysqlclient-dev'
     ]);
   });

@@ -25,6 +25,20 @@ class RubyApplication extends CompilableComponent {
       'libgmp-dev',
       'zlib1g-dev',
     ];
+    const debianSpecialDeps = [
+      {
+        type: 'system',
+        id: 'libmysqlclient18',
+        distro: 'debian',
+        version: '8',
+      },
+      {
+        type: 'system',
+        id: 'default-libmysqlclient-dev',
+        distro: 'debian',
+        version: '9',
+      },
+    ];
     return [
       {
         'type': 'nami',
@@ -36,7 +50,7 @@ class RubyApplication extends CompilableComponent {
       },
     ].concat(_.map(debianPackages, pkg => {
       return {'type': 'system', 'id': pkg, distro: 'debian'};
-    }));
+    })).concat(debianSpecialDeps);
   }
 
   /**

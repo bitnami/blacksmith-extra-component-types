@@ -33,11 +33,8 @@ class PHPApplication extends CompiledComponent {
         'libgcc1',
         'libgcrypt20',
         'libgmp10',
-        'libgnutls28-dev',
         'libgpg-error0',
         'libgssapi-krb5-2',
-        'libhogweed4',
-        'libicu57',
         'libidn11',
         'libjpeg62-turbo',
         'libk5crypto3',
@@ -48,7 +45,6 @@ class PHPApplication extends CompiledComponent {
         'liblzma5',
         'libmcrypt4',
         'libncurses5',
-        'nettle-dev',
         'libp11-kit0',
         'libpng12-0',
         'libpq5',
@@ -56,11 +52,9 @@ class PHPApplication extends CompiledComponent {
         'librtmp1',
         'libsasl2-2',
         'libssh2-1',
-        'libssl1.0-dev',
         'libstdc++6',
         'libsybdb5',
         'libtasn1-6',
-        'libtidy-dev',
         'libtinfo5',
         'libxml2',
         'libxslt1.1',
@@ -102,6 +96,80 @@ class PHPApplication extends CompiledComponent {
         'zlib',
       ],
     };
+    const debianSpecialDeps = [
+      {
+        type: 'system',
+        id: 'libgnutls-deb0-28',
+        distro: 'debian',
+        version: '8',
+      },
+      {
+        type: 'system',
+        id: 'libgnutls28-dev',
+        distro: 'debian',
+        version: '9',
+      },
+      {
+        type: 'system',
+        id: 'libhogweed2',
+        distro: 'debian',
+        version: '8',
+      },
+      {
+        type: 'system',
+        id: 'libhogweed4',
+        distro: 'debian',
+        version: '9',
+      },
+      {
+        type: 'system',
+        id: 'libicu52',
+        distro: 'debian',
+        version: '8',
+      },
+      {
+        type: 'system',
+        id: 'libicu57',
+        distro: 'debian',
+        version: '9',
+      },
+      {
+        type: 'system',
+        id: 'libnettle4',
+        distro: 'debian',
+        version: '8',
+      },
+      {
+        type: 'system',
+        id: 'nettle-dev',
+        distro: 'debian',
+        version: '9',
+      },
+      {
+        type: 'system',
+        id: 'libssl1.0.0',
+        distro: 'debian',
+        version: '8',
+      },
+      {
+        type: 'system',
+        id: 'libssl1.0-dev',
+        distro: 'debian',
+        version: '9',
+      },
+      {
+        type: 'system',
+        id: 'libtidy-0.99-0',
+        distro: 'debian',
+        version: '8',
+      },
+      {
+        type: 'system',
+        id: 'libtidy-dev',
+        distro: 'debian',
+        version: '9',
+      },
+    ];
     systemPackages.rhel = systemPackages.centos;
     systemPackages.ol = systemPackages.centos.concat([
       'libmcrypt-devel',
@@ -117,7 +185,7 @@ class PHPApplication extends CompiledComponent {
       });
     });
 
-    return _.flatten(packages.concat(modules));
+    return _.flatten(packages.concat(modules)).concat(debianSpecialDeps);
   }
 
   /**
