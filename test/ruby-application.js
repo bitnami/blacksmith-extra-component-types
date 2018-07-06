@@ -29,7 +29,8 @@ describe('Ruby Application', function() {
       bd => bd.id)).to.be.eql([
         'ruby', 'imagemagick', 'ghostscript', 'libc6', 'libmagickwand-dev', 'default-libmysqlclient-dev', 'libpq-dev',
         'libxml2-dev', 'libxslt1-dev', 'libgmp-dev', 'zlib1g-dev',
-    ]);
+      ]
+    );
   });
   it('builds a sample ruby application', () => {
     const log = {};
