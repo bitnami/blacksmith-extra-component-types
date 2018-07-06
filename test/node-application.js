@@ -24,7 +24,7 @@ describe('Node Application', function() {
   it('should return its buildDependencies', () => {
     const nodeApplication = new NodeApplication();
     expect(_.map(nodeApplication.buildDependencies, bd => bd.id)).to.be.eql([
-      'node', 'imagemagick', 'ghostscript', 'libc6', 'libmysqlclient18'
+      'node', 'imagemagick', 'ghostscript', 'libc6', 'default-libmysqlclient-dev'
     ]);
   });
   it('builds a sample node application', () => {
