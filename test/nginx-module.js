@@ -2,9 +2,6 @@
 
 const NginxModule = require('../nginx-module');
 
-const _ = require('lodash');
-const path = require('path');
-const fs = require('fs');
 const helpers = require('blacksmith/test/helpers');
 const chai = require('chai');
 const chaiFs = require('chai-fs');
@@ -13,7 +10,6 @@ chai.use(chaiFs);
 
 describe('Nginx Module', function() {
   let be;
-  let log;
   let test;
 
   function createNginxModule() {
@@ -33,7 +29,6 @@ describe('Nginx Module', function() {
 
   beforeEach('prepare environment', () => {
     helpers.cleanTestEnv();
-    log = {};
     test = helpers.createTestEnv();
     be = helpers.getDummyBuildEnvironment(test);
   });
