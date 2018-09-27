@@ -16,7 +16,7 @@ class PHPApplication extends CompiledComponent {
     const modules = [{
       'type': 'nami',
       'id': 'php',
-      'installCommands': ['bitnami-pkg install php-7.0.30-5'],
+      'installCommands': [`bitnami-pkg install php-${this.phpVersion}`],
       'envVars': {
         PATH: '$PATH:/opt/bitnami/php/bin'
       }
@@ -197,6 +197,15 @@ class PHPApplication extends CompiledComponent {
     });
 
     return _.flatten(packages.concat(modules)).concat(debianSpecialDeps);
+  }
+
+  /**
+   * PHP version to build
+   * @function PHPApplication~phpVersion
+   * @returns {String} PHP version to build.
+   */
+  get phpVersion() {
+    return '7.0.30-5';
   }
 
   /**
