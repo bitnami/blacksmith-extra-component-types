@@ -15,8 +15,7 @@ module.exports = {
   Node9Application: require('./node-application/node9'),
   Node10Application: require('./node-application/node10'),
   PHPApplication: require('./php-application'),
-  PHP70Application: require('./php-application'),
-  PHP71Application: require('./php-application/php71'),
+  PHP71Application: require('./php-application'),
   PHP72Application: require('./php-application/php72'),
   PeclComponent: require('./pecl-component'),
 };
