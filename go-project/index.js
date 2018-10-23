@@ -49,6 +49,8 @@ class GoProject extends MakeComponent {
       }
     ];
   }
+
+  configure() {}
 }
 
 module.exports = GoProject;
