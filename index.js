@@ -18,4 +18,5 @@ module.exports = {
   PHP71Application: require('./php-application'),
   PHP72Application: require('./php-application/php72'),
   PeclComponent: require('./pecl-component'),
+  GoProject: require('./go-project'),
 };
