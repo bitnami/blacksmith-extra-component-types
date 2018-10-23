@@ -1,7 +1,7 @@
+/* eslint-disable no-unused-expressions */
 'use strict';
 
 const GoProject = require('../go-project');
-const path = require('path');
 const helpers = require('blacksmith/test/helpers');
 const chai = require('chai');
 const chaiFs = require('chai-fs');
