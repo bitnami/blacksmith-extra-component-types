@@ -37,7 +37,7 @@ class GoProject extends MakeComponent {
 
   get buildDependencies() {
     const goTar = `go${this.goVersion}.linux-amd64.tar.gz`;
-    const goGetCommands = this.goBuildDependencies.map((dep) => `go get ${dep}`);
+    const goGetCommands = this.goBuildDependencies.map((dep) => `/usr/local/go/bin/go get ${dep}`);
     return [
       {
         type: 'go',
