@@ -18,10 +18,10 @@ class GoProject extends MakeComponent {
   }
 
   getExportableEnvironmentVariables() {
-    return Object.assign(super.getExportableEnvironmentVariables(), {
+    return {
       PATH: `${process.env.PATH}:${this.goPath}/bin:${process.env.HOME}/go/bin:/usr/local/go/bin`,
       GOPATH: this.goPath,
-    });
+    };
   }
 
   get goVersion() {
