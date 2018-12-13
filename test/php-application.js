@@ -4,6 +4,7 @@ const _ = require('lodash');
 const PHPApplication = require('../php-application');
 const PHP71Application = require('../php-application');
 const PHP72Application = require('../php-application/php72');
+const PHP73Application = require('../php-application/php73');
 const helpers = require('blacksmith/test/helpers');
 const nfile = require('nami-utils').file;
 const path = require('path');
@@ -175,5 +176,13 @@ describe('PHP72 Application', function() {
     const phpApplication = new PHP72Application();
     const phpBuildDep = _.find(phpApplication.buildDependencies, bd => bd.id === 'php');
     expect(phpBuildDep.installCommands[0]).to.match(/bitnami-pkg install php-7\.2\..*/);
+  });
+});
+
+describe('PHP73 Application', function() {
+  it('should return its buildDependencies', () => {
+    const phpApplication = new PHP73Application();
+    const phpBuildDep = _.find(phpApplication.buildDependencies, bd => bd.id === 'php');
+    expect(phpBuildDep.installCommands[0]).to.match(/bitnami-pkg install php-7\.3\..*/);
   });
 });
