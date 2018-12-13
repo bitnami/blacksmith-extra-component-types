@@ -8,7 +8,7 @@ const PHPApplication = require('./index');
  * @class
  * @extends PHPApplication
  */
-class PHP72Application extends PHPApplication {
+class PHP73Application extends PHPApplication {
   get phpVersion() {
     return '7.3.0-0';
   }
