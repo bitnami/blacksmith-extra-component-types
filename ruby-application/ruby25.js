@@ -1,6 +1,7 @@
 'use strict';
 
 const RubyApplication = require('./index');
+const nfile = require('nami-utils').file;
 
 /**
  * Class representing a ruby Application for versions 2.5.X
