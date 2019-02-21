@@ -1,6 +1,6 @@
 {
   "name": "blacksmith-extra-component-types",
-  "version": "0.0.33",
+  "version": "0.0.34",
   "description": "Additional blacksmith component types",
   "main": "index.js",
   "dependencies": {

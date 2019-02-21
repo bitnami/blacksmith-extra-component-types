@@ -123,9 +123,7 @@ describe('PHP Application', () => {
     phpRuntimeDependencies.ol = phpRuntimeDependencies.centos.concat([
       'libmcrypt-devel',
       'freetds-devel',
-      'fgci-devel',
       'libtidy-devel',
-      'libpqxx-dev',
     ]);
 
     const getBuildDependencies = (deps, distro, version) => _.map(_.filter(deps, bd => bd.distro === distro &&
