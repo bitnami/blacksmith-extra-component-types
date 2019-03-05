@@ -20,4 +20,5 @@ module.exports = {
   PHP73Application: require('./php-application/php73'),
   PeclComponent: require('./pecl-component'),
   GoProject: require('./go-project'),
+  WordPressPlugin: require('./wordpress-plugin'),
 };

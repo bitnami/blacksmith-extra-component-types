@@ -6,7 +6,17 @@ const commonTasks = require('bitnami-gulp-common-tasks')(gulp);
 /* CI tasks */
 
 const testFiles = './test/*.js';
-const srcFiles = ['index.js', 'ruby-application/*.js', 'node-application/*.js', 'php-application/*.js', testFiles];
+const srcFiles = [
+  index.js',
+  'go-project/*.js',
+  'nginx-module/*.js',
+  'node-application/*.js',
+  'pecl-component/*.js',
+  'php-application/*.js',
+  'ruby-application/*.js',
+  'wordpress-plugin/*.js',
+  testFiles,
+];
 const testArgs = {sources: srcFiles, tests: testFiles};
 
 commonTasks.test(testArgs);
