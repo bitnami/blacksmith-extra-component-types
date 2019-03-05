@@ -7,7 +7,7 @@ const commonTasks = require('bitnami-gulp-common-tasks')(gulp);
 
 const testFiles = './test/*.js';
 const srcFiles = [
-  index.js',
+  'index.js',
   'go-project/*.js',
   'nginx-module/*.js',
   'node-application/*.js',
