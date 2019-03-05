@@ -26,6 +26,10 @@ class WordPressPlugin extends CompiledComponent {
     this._validateChecksum(this.source.tarball, this.source.sha256);
     tarballUtils.unpack(this.source.tarball, this.srcDir);
   }
+  /**
+   * Each plugin includes its own license in the source tarball
+   */
+  fulfillLicenseRequirements() {}
 }
 
 module.exports = WordPressPlugin;
