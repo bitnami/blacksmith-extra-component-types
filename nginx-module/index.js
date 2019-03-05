@@ -26,7 +26,7 @@ class NginxModule extends CompiledComponent {
 
   nginxAdditionalConfigureFlags() {
     if (this.isDynamicModule) {
-     return [`--add-dynamic-module=${this.srcDir}`];
+      return [`--add-dynamic-module=${this.srcDir}`];
     }
     return [`--add-module=${this.srcDir}`];
   }
