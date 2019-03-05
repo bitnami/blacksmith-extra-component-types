@@ -9,7 +9,8 @@ class WordPressPlugin extends CompiledComponent {
    * @returns {mixed}
   */
   get prefix() {
-    return nfile.join(this.be.prefixDir, 'wordpress', 'wp-content', 'plugins');
+    const pluginDirname = this.id.replace(/wordpress-plugin-/g,'');
+    return nfile.join(this.be.prefixDir, 'wordpress', 'wp-content', 'plugins', pluginDirname);
   }
 }
 
