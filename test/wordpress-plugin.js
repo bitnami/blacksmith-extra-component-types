@@ -39,7 +39,7 @@ describe('WordPress Plugin', function() {
 
   it('should return \'wordpress/wp-content/plugins\' as prefix by default', () => {
     const wordpressPlugin = createWordPressPlugin();
-    const wordpressPluginPrefix = wordpressPlugin.prefix();
+    const wordpressPluginPrefix = wordpressPlugin.prefix;
     expect(wordpressPluginPrefix).to.match(/wordpress\/wp-content\/plugins/);
   });
 });
