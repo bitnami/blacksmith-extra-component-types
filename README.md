@@ -3,9 +3,10 @@
 # Blacksmith Extra Component Types
 
 This module contains the compilation logic to build:
- - Ruby Applications
- - Node Applications
- - PHP Applications
+
+- Ruby Applications
+- Node Applications
+- PHP Applications
 
 # About
 
