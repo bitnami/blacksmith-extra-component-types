@@ -5,6 +5,7 @@ const Ruby21Application = require('../ruby-application/ruby21');
 const Ruby22Application = require('../ruby-application/ruby22');
 const Ruby24Application = require('../ruby-application/ruby24');
 const Ruby25Application = require('../ruby-application/ruby25');
+const Ruby26Application = require('../ruby-application/ruby26');
 
 const _ = require('lodash');
 const path = require('path');
@@ -118,5 +119,13 @@ describe('Ruby25 Application', function() {
     const rubyApplication = new Ruby25Application();
     const rubyBuildDep = _.find(rubyApplication.buildDependencies, bd => bd.id === 'ruby');
     expect(rubyBuildDep.installCommands[0]).to.match(/bitnami-pkg install ruby-2\.5\..*/);
+  });
+});
+
+describe('Ruby26 Application', function() {
+  it('should return its buildDependencies', () => {
+    const rubyApplication = new Ruby26Application();
+    const rubyBuildDep = _.find(rubyApplication.buildDependencies, bd => bd.id === 'ruby');
+    expect(rubyBuildDep.installCommands[0]).to.match(/bitnami-pkg install ruby-2\.6\..*/);
   });
 });
