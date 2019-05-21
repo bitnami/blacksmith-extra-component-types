@@ -7,6 +7,7 @@ module.exports = {
   Ruby23Application: require('./ruby-application'),
   Ruby24Application: require('./ruby-application/ruby24'),
   Ruby25Application: require('./ruby-application/ruby25'),
+  Ruby26Application: require('./ruby-application/ruby26'),
   NginxModule: require('./nginx-module'),
   NodeApplication: require('./node-application'),
   Node6Application: require('./node-application/node6'),
