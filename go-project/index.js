@@ -38,7 +38,7 @@ class GoProject extends MakeComponent {
   get buildDependencies() {
     const goTar = `go${this.goVersion}.linux-amd64.tar.gz`;
     const goGetCommands = this.goBuildDependencies.map((dep) => `/usr/local/go/bin/go get ${dep}`);
-    return [
+    const buildDependencies = [
       {
         type: 'go',
         id: 'go',
@@ -48,6 +48,14 @@ class GoProject extends MakeComponent {
         ].concat(goGetCommands),
       }
     ];
+    this.goBuildDependencies.forEach((dep) => {
+      buildDependencies.push({
+        type: 'go',
+        id: `go-builddependency-${nfile.basename(dep)}`,
+        installCommands: [`/usr/local/go/bin/go get ${dep}`],
+      });
+    });
+    return buildDependencies;
   }
 
   configure() {}
