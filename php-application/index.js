@@ -57,6 +57,7 @@ class PHPApplication extends CompiledComponent {
         'libtinfo5',
         'libxml2',
         'libxslt1.1',
+        'libzip-dev',
         'zlib1g',
       ],
       centos: [
