@@ -100,7 +100,7 @@ describe('PHP Application', () => {
         'libidn11', 'libjpeg62-turbo', 'libk5crypto3', 'libkeyutils1', 'libkrb5-3', 'libkrb5support0',
         'libldap-2.4-2', 'liblzma5', 'libmcrypt4', 'libncurses5', 'libp11-kit0',
         'libpq5', 'libreadline-dev', 'librtmp1', 'libsasl2-2', 'libssh2-1', 'libstdc++6',
-        'libsybdb5', 'libtasn1-6', 'libtinfo5', 'libxml2', 'libxslt1.1', 'libzip-dev', 'zlib1g', 'libgnutls-deb0-28', 
+        'libsybdb5', 'libtasn1-6', 'libtinfo5', 'libxml2', 'libxslt1.1', 'libzip-dev', 'zlib1g', 'libgnutls-deb0-28',
         'libhogweed2', 'libicu52', 'libnettle4', 'libssl1.0.0', 'libtidy-0.99-0', 'libpng12-0'
       ],
       'debian-9': [
