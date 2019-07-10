@@ -2,9 +2,9 @@
 
 const _ = require('lodash');
 const PHPApplication = require('../php-application');
-const PHP71Application = require('../php-application');
+const PHP71Application = require('../php-application/php71');
 const PHP72Application = require('../php-application/php72');
-const PHP73Application = require('../php-application/php73');
+const PHP73Application = require('../php-application');
 const helpers = require('blacksmith/test/helpers');
 const nfile = require('nami-utils').file;
 const path = require('path');
