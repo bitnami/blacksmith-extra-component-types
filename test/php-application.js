@@ -2,9 +2,9 @@
 
 const _ = require('lodash');
 const PHPApplication = require('../php-application');
-const PHP71Application = require('../php-application');
+const PHP71Application = require('../php-application/php71');
 const PHP72Application = require('../php-application/php72');
-const PHP73Application = require('../php-application/php73');
+const PHP73Application = require('../php-application');
 const helpers = require('blacksmith/test/helpers');
 const nfile = require('nami-utils').file;
 const path = require('path');
@@ -100,8 +100,8 @@ describe('PHP Application', () => {
         'libidn11', 'libjpeg62-turbo', 'libk5crypto3', 'libkeyutils1', 'libkrb5-3', 'libkrb5support0',
         'libldap-2.4-2', 'liblzma5', 'libmcrypt4', 'libncurses5', 'libp11-kit0',
         'libpq5', 'libreadline-dev', 'librtmp1', 'libsasl2-2', 'libssh2-1', 'libstdc++6',
-        'libsybdb5', 'libtasn1-6', 'libtinfo5', 'libxml2', 'libxslt1.1', 'zlib1g', 'libgnutls-deb0-28', 'libhogweed2',
-        'libicu52', 'libnettle4', 'libssl1.0.0', 'libtidy-0.99-0', 'libpng12-0'
+        'libsybdb5', 'libtasn1-6', 'libtinfo5', 'libxml2', 'libxslt1.1', 'libzip-dev', 'zlib1g', 'libgnutls-deb0-28',
+        'libhogweed2', 'libicu52', 'libnettle4', 'libssl1.0.0', 'libtidy-0.99-0', 'libpng12-0'
       ],
       'debian-9': [
         'libbz2-1.0', 'libc6', 'libcomerr2', 'libcurl3', 'libffi6', 'libfreetype6', 'libgcc1', 'libgcrypt20',
@@ -109,7 +109,7 @@ describe('PHP Application', () => {
         'libidn11', 'libjpeg62-turbo', 'libk5crypto3', 'libkeyutils1', 'libkrb5-3', 'libkrb5support0',
         'libldap-2.4-2', 'liblzma5', 'libmcrypt4', 'libncurses5', 'libp11-kit0',
         'libpq5', 'libreadline-dev', 'librtmp1', 'libsasl2-2', 'libssh2-1', 'libstdc++6',
-        'libsybdb5', 'libtasn1-6', 'libtinfo5', 'libxml2', 'libxslt1.1', 'zlib1g',
+        'libsybdb5', 'libtasn1-6', 'libtinfo5', 'libxml2', 'libxslt1.1', 'libzip-dev', 'zlib1g',
         'libgnutls28-dev', 'libhogweed4', 'libicu57', 'nettle-dev', 'libssl1.0-dev', 'libtidy-dev', 'libpng-dev'
       ],
       centos: [

@@ -57,6 +57,7 @@ class PHPApplication extends CompiledComponent {
         'libtinfo5',
         'libxml2',
         'libxslt1.1',
+        'libzip-dev',
         'zlib1g',
       ],
       centos: [
@@ -203,7 +204,7 @@ class PHPApplication extends CompiledComponent {
    * @returns {String} PHP version to build.
    */
   get phpVersion() {
-    return '7.1.21-1';
+    return '7.3.0-0';
   }
 
   /**
