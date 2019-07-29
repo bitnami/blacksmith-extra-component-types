@@ -51,7 +51,7 @@ describe('Harbor Component', function() {
     const componentToParse = 'notExisting';
     const componentRegex = /THISWILLFAIL=v(\d+[.]\d+[.]\d+(-\d+)?)/;
     const exception = new Error(`Could not parse ${componentToParse} version from ${harborMakefileURL}`);
-    const failFunc = harborComponent._getVersionFromHarbor.bind(componentToParse, componentRegex);
+    const failFunc = harborComponent._getVersionFromHarbor.bind(componentRegex, componentToParse);
     expect(failFunc).to.throw(exception);
   });
 });
