@@ -22,4 +22,5 @@ module.exports = {
   PeclComponent: require('./pecl-component'),
   GoProject: require('./go-project'),
   WordPressPlugin: require('./wordpress-plugin'),
+  HarborComponent: require('./harbor-component'),
 };
