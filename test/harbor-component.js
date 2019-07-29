@@ -47,7 +47,6 @@ describe('Harbor Component', function() {
 
   it('Should fail when checking the version of a non existing component', () => {
     const harborComponent = createHarborComponent();
-    const harborMakefileURL = 'https://raw.githubusercontent.com/goharbor/harbor/master/Makefile';
     const componentToParse = 'notExisting';
     const componentRegex = /THISWILLFAIL=v(\d+[.]\d+[.]\d+(-\d+)?)/;
     const failFunc = harborComponent._getVersionFromHarbor.bind(componentRegex, componentToParse);
