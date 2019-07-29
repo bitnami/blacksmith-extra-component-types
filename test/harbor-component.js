@@ -50,8 +50,7 @@ describe('Harbor Component', function() {
     const harborMakefileURL = 'https://raw.githubusercontent.com/goharbor/harbor/master/Makefile';
     const componentToParse = 'notExisting';
     const componentRegex = /THISWILLFAIL=v(\d+[.]\d+[.]\d+(-\d+)?)/;
-    const exception = new Error(`Could not parse ${componentToParse} version from ${harborMakefileURL}`);
     const failFunc = harborComponent._getVersionFromHarbor.bind(componentRegex, componentToParse);
-    expect(failFunc).to.throw(exception);
+    expect(failFunc).to.throw();
   });
 });
