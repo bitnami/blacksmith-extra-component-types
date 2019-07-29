@@ -39,16 +39,19 @@ describe('Harbor Component', function() {
 
   it('Should parse the version of an existing component', () => {
     const harborComponent = createHarborComponent();
-    const exampleVersion = harborComponent._getVersionFromHarbor('docker-distribution', /REGISTRYVERSION=v(\d+[.]\d+[.]\d+(-\d+)?)/);
+    const componentToParse = 'docker-distribution';
+    const componentRegex = /REGISTRYVERSION=v(\d+[.]\d+[.]\d+(-\d+)?)/;
+    const exampleVersion = harborComponent._getVersionFromHarbor(componentToParse, componentRegex);
     expect(exampleVersion).to.match(/\d+[.]\d+[.]\d+/);
   });
 
   it('Should fail when checking the version of a non existing component', () => {
     const harborComponent = createHarborComponent();
     const harborMakefileURL = 'https://raw.githubusercontent.com/goharbor/harbor/master/Makefile';
-    const componentName = 'notExisting';
+    const componentToParse = 'notExisting';
+    const componentRegex = /THISWILLFAIL=v(\d+[.]\d+[.]\d+(-\d+)?)/;
     const exception = new Error(`Could not parse ${componentToParse} version from ${harborMakefileURL}`);
-    const failedFunction = harborComponent._getVersionFromHarbor.bind(componentName, /THISWILLFAIL=v(\d+[.]\d+[.]\d+(-\d+)?)/);
-    expect(failedFunction).to.throw(exception);
+    const failFunc = harborComponent._getVersionFromHarbor.bind(componentName, componentRegex);
+    expect(failFunc).to.throw(exception);
   });
 });
