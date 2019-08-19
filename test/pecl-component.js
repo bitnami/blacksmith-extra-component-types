@@ -1,7 +1,9 @@
 'use strict';
 
 const PHPApplication = require('../php-application');
+const PHP71Application = require('../php-application/php71');
 const PeclComponent = require('../pecl-component');
+const PeclPHP71Component = require('../pecl-component/pecl-php71');
 const path = require('path');
 const helpers = require('blacksmith/test/helpers');
 const chai = require('chai');
@@ -20,6 +22,10 @@ describe('Pecl Component', function() {
   it('should return its buildDependencies', () => {
     const peclComponent = new PeclComponent();
     expect(peclComponent.buildDependencies).to.be.eql(PHPApplication.prototype.buildDependencies);
+  });
+  it('should return its buildDependencies', () => {
+    const peclPHP71Component = new PeclPHP71Component();
+    expect(peclPHP71Component.buildDependencies).to.be.eql(PHP71Application.prototype.buildDependencies);
   });
   it('builds a sample pecl application', () => {
     const log = {};
