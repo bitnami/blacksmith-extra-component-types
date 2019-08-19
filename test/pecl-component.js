@@ -1,6 +1,6 @@
 'use strict';
 
-const PHPApplication = require('../php-application');
+const PHPApplication = require('../php-application/php71.js');
 const PeclComponent = require('../pecl-component');
 const path = require('path');
 const helpers = require('blacksmith/test/helpers');
