@@ -1,5 +1,6 @@
 'use strict';
 
+const peclComponent = require('./index');
 const PHP71Application = require('../php-application/php71.js');
 
 class peclPHP71Component extends peclComponent {
