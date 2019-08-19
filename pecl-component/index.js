@@ -2,7 +2,7 @@
 
 const nfile = require('nami-utils').file;
 const MakeComponent = require('blacksmith/lib/base-components').MakeComponent;
-const PHPApplication = require('../php-application/php71.js');
+const PHPApplication = require('../php-application');
 
 class peclComponent extends MakeComponent {
   get buildDependencies() {
