@@ -1,7 +1,11 @@
 'use strict';
 
-const PHPApplication = require('../php-application/php71.js');
+const PHP71Application = require('../php-application/php71.js');
 
-class peclPHP71Component extends peclComponent {}
+class peclPHP71Component extends peclComponent {
+  get buildDependencies() {
+    return PHP71Application.prototype.buildDependencies;
+  }
+}
 
 module.exports = peclPHP71Component;

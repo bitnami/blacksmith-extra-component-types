@@ -24,7 +24,6 @@ describe('Pecl Component', function() {
     expect(peclComponent.buildDependencies).to.be.eql(PHPApplication.prototype.buildDependencies);
   });
   it('should return its buildDependencies', () => {
-    const peclPHP71Component = new peclPHP71Component();
     expect(peclPHP71Component.buildDependencies).to.be.eql(PHP71Application.prototype.buildDependencies);
   });
   it('builds a sample pecl application', () => {
