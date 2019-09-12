@@ -21,6 +21,7 @@ module.exports = {
   PHP73Application: require('./php-application'),
   PeclComponent: require('./pecl-component'),
   PeclPHP71Component: require('./pecl-component/pecl-php71'),
+  PeclPHP72Component: require('./pecl-component/pecl-php72'),
   GoProject: require('./go-project'),
   WordPressPlugin: require('./wordpress-plugin'),
   HarborComponent: require('./harbor-component'),
