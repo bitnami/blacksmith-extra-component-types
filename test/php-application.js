@@ -100,8 +100,8 @@ describe('PHP Application', () => {
         'libidn11', 'libjpeg62-turbo', 'libk5crypto3', 'libkeyutils1', 'libkrb5-3', 'libkrb5support0',
         'libldap-2.4-2', 'liblzma5', 'libmcrypt4', 'libncurses5', 'libp11-kit0',
         'libpng-dev', 'libpq5', 'libreadline-dev', 'librtmp1', 'libsasl2-2', 'libssh2-1', 'libssl-dev', 'libstdc++6',
-        'libsybdb5', 'libtasn1-6', 'libtinfo5', 'libtidy-dev', 'libxml2', 'libxslt1.1', 'libzip-dev', 'nettle-dev', 'zlib1g',
-        'libcurl3', 'libicu57'
+        'libsybdb5', 'libtasn1-6', 'libtinfo5', 'libtidy-dev', 'libxml2', 'libxslt1.1', 'libzip-dev',
+        'nettle-dev', 'zlib1g', 'libcurl3', 'libicu57'
       ],
       'debian-10': [
         'libbz2-1.0', 'libc6', 'libcomerr2', 'libffi6', 'libfreetype6', 'libgcc1', 'libgcrypt20',
@@ -109,8 +109,8 @@ describe('PHP Application', () => {
         'libidn11', 'libjpeg62-turbo', 'libk5crypto3', 'libkeyutils1', 'libkrb5-3', 'libkrb5support0',
         'libldap-2.4-2', 'liblzma5', 'libmcrypt4', 'libncurses5', 'libp11-kit0',
         'libpng-dev', 'libpq5', 'libreadline-dev', 'librtmp1', 'libsasl2-2', 'libssh2-1', 'libssl-dev', 'libstdc++6',
-        'libsybdb5', 'libtasn1-6', 'libtinfo5', 'libtidy-dev', 'libxml2', 'libxslt1.1', 'libzip-dev', 'nettle-dev', 'zlib1g',
-        'libcurl4', 'libicu63'
+        'libsybdb5', 'libtasn1-6', 'libtinfo5', 'libtidy-dev', 'libxml2', 'libxslt1.1', 'libzip-dev',
+        'nettle-dev', 'zlib1g', 'libcurl4', 'libicu63'
       ],
       centos: [
         'bzip2-libs', 'cyrus-sasl-lib', 'freetype', 'glibc', 'gmp', 'keyutils-libs', 'krb5-libs', 'libcom_err',
