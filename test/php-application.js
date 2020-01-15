@@ -94,15 +94,6 @@ describe('PHP Application', () => {
   it('should return its buildDependencies', () => {
     const phpApplication = createPHPComponent(PHPApplication);
     const phpRuntimeDependencies = {
-      'debian-8': [
-        'libbz2-1.0', 'libc6', 'libcomerr2', 'libcurl3', 'libffi6', 'libfreetype6', 'libgcc1', 'libgcrypt20',
-        'libgmp10', 'libgpg-error0', 'libgssapi-krb5-2',
-        'libidn11', 'libjpeg62-turbo', 'libk5crypto3', 'libkeyutils1', 'libkrb5-3', 'libkrb5support0',
-        'libldap-2.4-2', 'liblzma5', 'libmcrypt4', 'libncurses5', 'libp11-kit0',
-        'libpq5', 'libreadline-dev', 'librtmp1', 'libsasl2-2', 'libssh2-1', 'libstdc++6',
-        'libsybdb5', 'libtasn1-6', 'libtinfo5', 'libxml2', 'libxslt1.1', 'libzip-dev', 'zlib1g', 'libgnutls-deb0-28',
-        'libhogweed2', 'libicu52', 'libnettle4', 'libssl1.0.0', 'libtidy-0.99-0', 'libpng12-0'
-      ],
       'debian-9': [
         'libbz2-1.0', 'libc6', 'libcomerr2', 'libcurl3', 'libffi6', 'libfreetype6', 'libgcc1', 'libgcrypt20',
         'libgmp10', 'libgpg-error0', 'libgssapi-krb5-2',
@@ -110,7 +101,16 @@ describe('PHP Application', () => {
         'libldap-2.4-2', 'liblzma5', 'libmcrypt4', 'libncurses5', 'libp11-kit0',
         'libpq5', 'libreadline-dev', 'librtmp1', 'libsasl2-2', 'libssh2-1', 'libstdc++6',
         'libsybdb5', 'libtasn1-6', 'libtinfo5', 'libxml2', 'libxslt1.1', 'libzip-dev', 'zlib1g',
-        'libgnutls28-dev', 'libhogweed4', 'libicu57', 'nettle-dev', 'libssl1.0-dev', 'libtidy-dev', 'libpng-dev'
+        'libgnutls28-dev', 'libhogweed4', 'libicu57', 'nettle-dev', 'libssl-dev', 'libtidy-dev', 'libpng-dev'
+      ],
+      'debian-10': [
+        'libbz2-1.0', 'libc6', 'libcomerr2', 'libcurl4', 'libffi6', 'libfreetype6', 'libgcc1', 'libgcrypt20',
+        'libgmp10', 'libgpg-error0', 'libgssapi-krb5-2',
+        'libidn11', 'libjpeg62-turbo', 'libk5crypto3', 'libkeyutils1', 'libkrb5-3', 'libkrb5support0',
+        'libldap-2.4-2', 'liblzma5', 'libmcrypt4', 'libncurses5', 'libp11-kit0',
+        'libpq5', 'libreadline-dev', 'librtmp1', 'libsasl2-2', 'libssh2-1', 'libstdc++6',
+        'libsybdb5', 'libtasn1-6', 'libtinfo5', 'libxml2', 'libxslt1.1', 'libzip-dev', 'zlib1g',
+        'libgnutls28-dev', 'libhogweed4', 'libicu63', 'nettle-dev', 'libssl-dev', 'libtidy-dev', 'libpng-dev'
       ],
       centos: [
         'bzip2-libs', 'cyrus-sasl-lib', 'freetype', 'glibc', 'gmp', 'keyutils-libs', 'krb5-libs', 'libcom_err',
@@ -130,8 +130,8 @@ describe('PHP Application', () => {
       (!version || !bd.version || version === bd.version)), bd => bd.id);
 
     const phpBuildDependencies = {
-      'debian-8': getBuildDependencies(phpApplication.buildDependencies, 'debian', '8'),
       'debian-9': getBuildDependencies(phpApplication.buildDependencies, 'debian', '9'),
+      'debian-10': getBuildDependencies(phpApplication.buildDependencies, 'debian', '10'),
       centos: getBuildDependencies(phpApplication.buildDependencies, 'centos'),
       rhel: getBuildDependencies(phpApplication.buildDependencies, 'rhel'),
       ol: getBuildDependencies(phpApplication.buildDependencies, 'ol'),

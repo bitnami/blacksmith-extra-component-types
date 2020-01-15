@@ -125,7 +125,7 @@ class PHPApplication extends CompiledComponent {
         id: 'libicu63',
         distro: 'debian',
         version: '10',
-      },      
+      },
     ];
     systemPackages.rhel = systemPackages.centos;
     systemPackages.ol = systemPackages.centos.concat([
