@@ -95,22 +95,22 @@ describe('PHP Application', () => {
     const phpApplication = createPHPComponent(PHPApplication);
     const phpRuntimeDependencies = {
       'debian-9': [
-        'libbz2-1.0', 'libc6', 'libcomerr2', 'libcurl3', 'libffi6', 'libfreetype6', 'libgcc1', 'libgcrypt20',
-        'libgmp10', 'libgpg-error0', 'libgssapi-krb5-2',
+        'libbz2-1.0', 'libc6', 'libcomerr2', 'libffi6', 'libfreetype6', 'libgcc1', 'libgcrypt20',
+        'libgmp10', 'libgnutls28-dev', 'libgpg-error0', 'libgssapi-krb5-2', 'libhogweed4',
         'libidn11', 'libjpeg62-turbo', 'libk5crypto3', 'libkeyutils1', 'libkrb5-3', 'libkrb5support0',
         'libldap-2.4-2', 'liblzma5', 'libmcrypt4', 'libncurses5', 'libp11-kit0',
-        'libpq5', 'libreadline-dev', 'librtmp1', 'libsasl2-2', 'libssh2-1', 'libstdc++6',
-        'libsybdb5', 'libtasn1-6', 'libtinfo5', 'libxml2', 'libxslt1.1', 'libzip-dev', 'zlib1g',
-        'libgnutls28-dev', 'libhogweed4', 'libicu57', 'nettle-dev', 'libssl-dev', 'libtidy-dev', 'libpng-dev'
+        'libpng-dev', 'libpq5', 'libreadline-dev', 'librtmp1', 'libsasl2-2', 'libssh2-1', 'libssl-dev', 'libstdc++6',
+        'libsybdb5', 'libtasn1-6', 'libtinfo5', 'libtidy-dev', 'libxml2', 'libxslt1.1', 'libzip-dev', 'nettle-dev', 'zlib1g',
+        'libcurl3', 'libicu57'
       ],
       'debian-10': [
-        'libbz2-1.0', 'libc6', 'libcomerr2', 'libcurl4', 'libffi6', 'libfreetype6', 'libgcc1', 'libgcrypt20',
-        'libgmp10', 'libgpg-error0', 'libgssapi-krb5-2',
+        'libbz2-1.0', 'libc6', 'libcomerr2', 'libffi6', 'libfreetype6', 'libgcc1', 'libgcrypt20',
+        'libgmp10', 'libgnutls28-dev', 'libgpg-error0', 'libgssapi-krb5-2', 'libhogweed4',
         'libidn11', 'libjpeg62-turbo', 'libk5crypto3', 'libkeyutils1', 'libkrb5-3', 'libkrb5support0',
         'libldap-2.4-2', 'liblzma5', 'libmcrypt4', 'libncurses5', 'libp11-kit0',
-        'libpq5', 'libreadline-dev', 'librtmp1', 'libsasl2-2', 'libssh2-1', 'libstdc++6',
-        'libsybdb5', 'libtasn1-6', 'libtinfo5', 'libxml2', 'libxslt1.1', 'libzip-dev', 'zlib1g',
-        'libgnutls28-dev', 'libhogweed4', 'libicu63', 'nettle-dev', 'libssl-dev', 'libtidy-dev', 'libpng-dev'
+        'libpng-dev', 'libpq5', 'libreadline-dev', 'librtmp1', 'libsasl2-2', 'libssh2-1', 'libssl-dev', 'libstdc++6',
+        'libsybdb5', 'libtasn1-6', 'libtinfo5', 'libtidy-dev', 'libxml2', 'libxslt1.1', 'libzip-dev', 'nettle-dev', 'zlib1g',
+        'libcurl4', 'libicu63'
       ],
       centos: [
         'bzip2-libs', 'cyrus-sasl-lib', 'freetype', 'glibc', 'gmp', 'keyutils-libs', 'krb5-libs', 'libcom_err',
