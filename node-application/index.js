@@ -13,23 +13,10 @@ const CompilableComponent = require('blacksmith/lib/base-components').Compilable
 class NodeApplication extends CompilableComponent {
   get buildDependencies() {
     const debianPackages = [
+      'default-libmysqlclient-dev',
       'imagemagick',
       'ghostscript',
       'libc6',
-    ];
-    const debianSpecialDeps = [
-      {
-        type: 'system',
-        id: 'libmysqlclient18',
-        distro: 'debian',
-        version: '8',
-      },
-      {
-        type: 'system',
-        id: 'default-libmysqlclient-dev',
-        distro: 'debian',
-        version: '9',
-      },
     ];
     return [{
       'type': 'nami',
@@ -40,7 +27,7 @@ class NodeApplication extends CompilableComponent {
       }
     }].concat(_.map(debianPackages, pkg => {
       return {'type': 'system', 'id': pkg, distro: 'debian'};
-    })).concat(debianSpecialDeps);
+    }));
   }
 
   /**
