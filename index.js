@@ -19,6 +19,7 @@ module.exports = {
   PHP71Application: require('./php-application/php71'),
   PHP72Application: require('./php-application/php72'),
   PHP73Application: require('./php-application'),
+  PHP74Application: require('./php-application/php74'),
   PeclComponent: require('./pecl-component'),
   PeclPHP71Component: require('./pecl-component/pecl-php71'),
   PeclPHP72Component: require('./pecl-component/pecl-php72'),
