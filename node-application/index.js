@@ -36,7 +36,7 @@ class NodeApplication extends CompilableComponent {
    * @returns {String} Node version to build.
    */
   nodeVersion() {
-    return '7.10.1-1';
+    return '10.20.1-3';
   }
 
   /**
