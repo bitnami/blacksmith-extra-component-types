@@ -1,11 +1,10 @@
 'use strict';
 
 const RubyApplication = require('../ruby-application');
-const Ruby21Application = require('../ruby-application/ruby21');
-const Ruby22Application = require('../ruby-application/ruby22');
-const Ruby24Application = require('../ruby-application/ruby24');
+const Ruby24Application = require('../ruby-application');
 const Ruby25Application = require('../ruby-application/ruby25');
 const Ruby26Application = require('../ruby-application/ruby26');
+const Ruby27Application = require('../ruby-application/ruby27');
 
 const _ = require('lodash');
 const path = require('path');
@@ -90,22 +89,6 @@ describe('Ruby Application', function() {
   });
 });
 
-describe('Ruby21 Application', function() {
-  it('should return its buildDependencies', () => {
-    const rubyApplication = new Ruby21Application();
-    const rubyBuildDep = _.find(rubyApplication.buildDependencies, bd => bd.id === 'ruby');
-    expect(rubyBuildDep.installCommands[0]).to.match(/bitnami-pkg install ruby-2\.1\..*/);
-  });
-});
-
-describe('Ruby22 Application', function() {
-  it('should return its buildDependencies', () => {
-    const rubyApplication = new Ruby22Application();
-    const rubyBuildDep = _.find(rubyApplication.buildDependencies, bd => bd.id === 'ruby');
-    expect(rubyBuildDep.installCommands[0]).to.match(/bitnami-pkg install ruby-2\.2\..*/);
-  });
-});
-
 describe('Ruby24 Application', function() {
   it('should return its buildDependencies', () => {
     const rubyApplication = new Ruby24Application();
@@ -127,5 +110,13 @@ describe('Ruby26 Application', function() {
     const rubyApplication = new Ruby26Application();
     const rubyBuildDep = _.find(rubyApplication.buildDependencies, bd => bd.id === 'ruby');
     expect(rubyBuildDep.installCommands[0]).to.match(/bitnami-pkg install ruby-2\.6\..*/);
+  });
+});
+
+describe('Ruby27 Application', function() {
+  it('should return its buildDependencies', () => {
+    const rubyApplication = new Ruby27Application();
+    const rubyBuildDep = _.find(rubyApplication.buildDependencies, bd => bd.id === 'ruby');
+    expect(rubyBuildDep.installCommands[0]).to.match(/bitnami-pkg install ruby-2\.7\..*/);
   });
 });

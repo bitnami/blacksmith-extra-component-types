@@ -2,10 +2,10 @@
 
 const _ = require('lodash');
 const NodeApplication = require('../node-application');
-const Node6Application = require('../node-application/node6');
-const Node8Application = require('../node-application/node8');
-const Node9Application = require('../node-application/node9');
-const Node10Application = require('../node-application/node10');
+const Node10Application = require('../node-application');
+const Node12Application = require('../node-application/node12');
+const Node13Application = require('../node-application/node13');
+const Node14Application = require('../node-application/node14');
 const path = require('path');
 const helpers = require('blacksmith/test/helpers');
 const chai = require('chai');
@@ -69,34 +69,34 @@ describe('Node Application', function() {
   });
 });
 
-describe('Node6 Application', function() {
-  it('should return its buildDependencies', () => {
-    const nodeApplication = new Node6Application();
-    const nodeBuildDep = _.find(nodeApplication.buildDependencies, bd => bd.id === 'node');
-    expect(nodeBuildDep.installCommands[0]).to.match(/bitnami-pkg install node-6\..*/);
-  });
-});
-
-describe('Node8 Application', function() {
-  it('should return its buildDependencies', () => {
-    const nodeApplication = new Node8Application();
-    const nodeBuildDep = _.find(nodeApplication.buildDependencies, bd => bd.id === 'node');
-    expect(nodeBuildDep.installCommands[0]).to.match(/bitnami-pkg install node-8\..*/);
-  });
-});
-
-describe('Node9 Application', function() {
-  it('should return its buildDependencies', () => {
-    const nodeApplication = new Node9Application();
-    const nodeBuildDep = _.find(nodeApplication.buildDependencies, bd => bd.id === 'node');
-    expect(nodeBuildDep.installCommands[0]).to.match(/bitnami-pkg install node-9\..*/);
-  });
-});
-
 describe('Node10 Application', function() {
   it('should return its buildDependencies', () => {
     const nodeApplication = new Node10Application();
     const nodeBuildDep = _.find(nodeApplication.buildDependencies, bd => bd.id === 'node');
     expect(nodeBuildDep.installCommands[0]).to.match(/bitnami-pkg install node-10\..*/);
+  });
+});
+
+describe('Node12 Application', function() {
+  it('should return its buildDependencies', () => {
+    const nodeApplication = new Node12Application();
+    const nodeBuildDep = _.find(nodeApplication.buildDependencies, bd => bd.id === 'node');
+    expect(nodeBuildDep.installCommands[0]).to.match(/bitnami-pkg install node-12\..*/);
+  });
+});
+
+describe('Node13 Application', function() {
+  it('should return its buildDependencies', () => {
+    const nodeApplication = new Node13Application();
+    const nodeBuildDep = _.find(nodeApplication.buildDependencies, bd => bd.id === 'node');
+    expect(nodeBuildDep.installCommands[0]).to.match(/bitnami-pkg install node-13\..*/);
+  });
+});
+
+describe('Node14 Application', function() {
+  it('should return its buildDependencies', () => {
+    const nodeApplication = new Node14Application();
+    const nodeBuildDep = _.find(nodeApplication.buildDependencies, bd => bd.id === 'node');
+    expect(nodeBuildDep.installCommands[0]).to.match(/bitnami-pkg install node-14\..*/);
   });
 });

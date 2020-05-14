@@ -20,8 +20,11 @@
     "chai-fs": "git+https://github.com/bitnami/chai-fs.git",
     "chai-subset": "^1.1.0",
     "bitnami-gulp-common-tasks": "bitnami/gulp-common-tasks#v2.0.4",
-    "gulp": "^4.0.0",
-    "nock": "^8.0.0"
+    "gulp": "^3.9.1",
+    "minimist": "^1.2.0",
+    "mocha": "^3.0.2",
+    "nock": "^8.0.0",
+    "sinon": "^9.0.0"
   },
   "scripts": {
     "lint": "gulp lint",
