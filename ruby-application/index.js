@@ -45,7 +45,7 @@ class RubyApplication extends CompilableComponent {
    * @returns {String} Ruby version to build.
    */
   rubyVersion() {
-    return '2.3.7-0';
+    return '2.4.10-0';
   }
 
   /**

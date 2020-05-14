@@ -9,7 +9,7 @@ const RubyApplication = require('./index');
  * @extends rubyApplication
  */
 class Ruby26Application extends RubyApplication {
-  rubyVersion() { return '2.6.1-0'; }
+  rubyVersion() { return '2.6.6-0'; }
 }
 
 module.exports = Ruby26Application;
