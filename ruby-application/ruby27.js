@@ -8,7 +8,7 @@ const RubyApplication = require('./index');
  * @class
  * @extends rubyApplication
  */
-class Ruby21Application extends RubyApplication {
+class Ruby27Application extends RubyApplication {
   rubyVersion() { return '2.7.1-0'; }
 }
 
