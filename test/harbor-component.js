@@ -84,5 +84,4 @@ describe('Harbor Component', function() {
     const failFunc = harborComponent._getVersionFromHarbor.bind(componentRegex, componentToParse);
     expect(failFunc).to.throw();
   });
-
 });
