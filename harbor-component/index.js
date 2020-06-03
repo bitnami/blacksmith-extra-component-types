@@ -4,8 +4,8 @@ const nos = require('nami-utils').os;
 const CompiledComponent = require('blacksmith/lib/base-components').CompiledComponent;
 const GoProject = require('../go-project');
 
-function getVersionFromHarbor(componentToParse, componentRegex, logger) {
-  const harborMakefileURL = 'https://raw.githubusercontent.com/goharbor/harbor/master/Makefile';
+function getVersionFromHarbor(componentToParse, componentRegex, harborVersion, logger) {
+  const harborMakefileURL = `https://raw.githubusercontent.com/goharbor/harbor/v${harborVersion}/Makefile`;
   const curlOutput = nos.runProgram('curl', ['-Lk', harborMakefileURL], {retrieveStdStreams: true});
   const parsedVersion = curlOutput.stdout.match(componentRegex);
   if (!parsedVersion || !parsedVersion[1]) {
@@ -17,13 +17,13 @@ function getVersionFromHarbor(componentToParse, componentRegex, logger) {
 
 class HarborComponent extends CompiledComponent {
   _getVersionFromHarbor(componentToParse, componentRegex) {
-    return getVersionFromHarbor(componentToParse, componentRegex, this.logger);
+    return getVersionFromHarbor(componentToParse, componentRegex, this.version, this.logger);
   }
 }
 
 class HarborGoComponent extends GoProject {
   _getVersionFromHarbor(componentToParse, componentRegex) {
-    return getVersionFromHarbor(componentToParse, componentRegex, this.logger);
+    return getVersionFromHarbor(componentToParse, componentRegex, this.version, this.logger);
   }
 }
 

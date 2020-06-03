@@ -16,7 +16,6 @@ describe('Harbor Component', function() {
   function createHarborComponent() {
     const component = helpers.createComponent(test);
     const harborComponent = new HarborComponent({
-      version: component.version,
       id: component.id,
       licenses: [{
         type: component.licenseType,
@@ -24,6 +23,7 @@ describe('Harbor Component', function() {
         main: true
       }]
     });
+    harborComponent.version = '2.0.0';
     harborComponent.setup({be});
     return harborComponent;
   }
@@ -31,7 +31,6 @@ describe('Harbor Component', function() {
   function createHarborGoComponent() {
     const component = helpers.createComponent(test);
     const harborGoComponent = new HarborGoComponent({
-      version: component.version,
       id: component.id,
       licenses: [{
         type: component.licenseType,
@@ -39,6 +38,7 @@ describe('Harbor Component', function() {
         main: true
       }]
     });
+    harborGoComponent.version = '2.0.0';
     harborGoComponent.setup({be});
     return harborGoComponent;
   }
