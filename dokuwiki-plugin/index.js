@@ -39,11 +39,6 @@ class DokuwikiPlugin extends CompiledComponent {
     tarballUtils.unpack(this.source.tarball, this.srcDir);
     nfile.move(nfile.join(this.be.srcDir, '*/*'), pluginDir);
   }
-
-  /**
-   * Each plugin includes its own license in the source tarball, usually in the README.md
-   */
-  fulfillLicenseRequirements() {}
 }
 
 module.exports = DokuwikiPlugin;
