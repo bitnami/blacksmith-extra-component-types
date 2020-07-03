@@ -37,7 +37,7 @@ class DokuwikiPlugin extends CompiledComponent {
     this._validateChecksum(this.source.tarball, this.source.sha256);
 
     tarballUtils.unpack(this.source.tarball, this.srcDir);
-    nfile.move(nfile.join(this.be.srcDir, '*/*'), pluginDir);
+    nfile.move(nfile.join(this.srcDir, '*/*'), pluginDir);
   }
 }
 
