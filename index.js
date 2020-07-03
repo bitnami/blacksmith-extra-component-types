@@ -24,4 +24,5 @@ module.exports = {
   WordPressPlugin: require('./wordpress-plugin'),
   HarborComponent: require('./harbor-component').HarborComponent,
   HarborGoComponent: require('./harbor-component').HarborGoComponent,
+  DokuwikiPlugin: require('./dokuwiki-plugin'),
 };

@@ -15,6 +15,7 @@ const srcFiles = [
   'php-application/*.js',
   'ruby-application/*.js',
   'wordpress-plugin/*.js',
+  'dokuwiki-plugin/*.js',
   testFiles,
 ];
 const testArgs = {sources: srcFiles, tests: testFiles};
