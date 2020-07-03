@@ -14,7 +14,7 @@ describe('DokuWiki Plugin', function() {
 
   function createDokuWikiPlugin() {
     const component = helpers.createComponent(test);
-    const dokuwikiPlugin = new DokuWikiPlugin({
+    const dokuwikiPlugin = new DokuwikiPlugin({
       version: component.version,
       id: component.id,
       licenses: [{
