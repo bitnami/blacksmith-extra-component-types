@@ -16,18 +16,15 @@ class DokuwikiPlugin extends CompiledComponent {
 
   /**
    * Get build prefix
-  */
+   */
   get prefix() {
-    return nfile.join(this.be.prefixDir, 'dokuwiki', 'lib', 'plugins');
+    return nfile.join(this.be.prefixDir, 'dokuwiki');
   }
 
   /**
-  * Extract component tarball in srcDir
-  */
+   * Extract component tarball in srcDir
+   */
   extract() {
-    const pluginDir = nfile.join(this.prefix, this.pluginName);
-    nfile.mkdir(pluginDir);
-
     if (_.isEmpty(this.source.tarball)) {
       throw new Error(`The source tarball is missing. Received ${this.source.tarball}`);
     }
@@ -35,9 +32,16 @@ class DokuwikiPlugin extends CompiledComponent {
       throw new Error(`Path to source tarball should be absolute. Found ${this.source.tarball}`);
     }
     this._validateChecksum(this.source.tarball, this.source.sha256);
-
     tarballUtils.unpack(this.source.tarball, this.srcDir);
-    nfile.move(nfile.join(this.srcDir, '*/*'), pluginDir);
+  }
+
+  /**
+   * Copy the plugin directory to the final destination
+   */
+  install() {
+    const pluginDir = nfile.join(this.prefix, 'lib', 'plugins', this.pluginName);
+    nfile.mkdir(pluginDir);
+    nfile.copy(nfile.join(this.srcDir, '*/*'), pluginDir);
   }
 }
 
