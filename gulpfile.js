@@ -8,6 +8,8 @@ const commonTasks = require('bitnami-gulp-common-tasks')(gulp);
 const testFiles = './test/*.js';
 const srcFiles = [
   'index.js',
+  'dokuwiki-plugin/*.js',
+  'drupal-plugin/*.js',
   'go-project/*.js',
   'nginx-module/*.js',
   'node-application/*.js',
@@ -15,7 +17,6 @@ const srcFiles = [
   'php-application/*.js',
   'ruby-application/*.js',
   'wordpress-plugin/*.js',
-  'dokuwiki-plugin/*.js',
   testFiles,
 ];
 const testArgs = {sources: srcFiles, tests: testFiles};
