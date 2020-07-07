@@ -1,6 +1,6 @@
 'use strict';
 
-const DokuwikiPlugin = require('../dokuwiki-plugin');
+const DrupalPlugin = require('../drupal-plugin');
 
 const helpers = require('blacksmith/test/helpers');
 const chai = require('chai');
@@ -8,13 +8,13 @@ const chaiFs = require('chai-fs');
 const expect = chai.expect;
 chai.use(chaiFs);
 
-describe('DokuWiki Plugin', function() {
+describe('Drupal Plugin', function() {
   let be;
   let test;
 
-  function createDokuWikiPlugin() {
+  function createDrupalPlugin() {
     const component = helpers.createComponent(test);
-    const dokuwikiPlugin = new DokuwikiPlugin({
+    const drupalPlugin = new DrupalPlugin({
       version: component.version,
       id: component.id,
       licenses: [{
@@ -23,8 +23,8 @@ describe('DokuWiki Plugin', function() {
         main: true
       }]
     });
-    dokuwikiPlugin.setup({be});
-    return dokuwikiPlugin;
+    drupalPlugin.setup({be});
+    return drupalPlugin;
   }
 
   beforeEach('prepare environment', () => {
@@ -37,15 +37,15 @@ describe('DokuWiki Plugin', function() {
     helpers.cleanTestEnv();
   });
 
-  it('should return \'dokuwiki\' as prefix by default', () => {
-    const dokuwikiPlugin = createDokuWikiPlugin();
-    const dokuwikiPluginPrefix = dokuwikiPlugin.prefix;
-    expect(dokuwikiPluginPrefix).to.match(/dokuwiki/);
+  it('should return \'drupal\' as prefix by default', () => {
+    const drupalPlugin = createDrupalPlugin();
+    const drupalPluginPrefix = drupalPlugin.prefix;
+    expect(drupalPluginPrefix).to.match(/drupal/);
   });
 
-  it('should return \'dokuwiki/licenses\' as licenseDir by default', () => {
-    const dokuwikiPlugin = createDokuWikiPlugin();
-    const dokuwikiPluginLicenseDir = dokuwikiPlugin.licenseDir;
-    expect(dokuwikiPluginLicenseDir).to.match(/dokuwiki\/licenses/);
+  it('should return \'drupal/licenses\' as licenseDir by default', () => {
+    const drupalPlugin = createDrupalPlugin();
+    const drupalPluginLicenseDir = drupalPlugin.licenseDir;
+    expect(drupalPluginLicenseDir).to.match(/drupal\/licenses/);
   });
 });
