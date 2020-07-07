@@ -37,10 +37,10 @@ describe('DokuWiki Plugin', function() {
     helpers.cleanTestEnv();
   });
 
-  it('should return \'dokuwiki/lib/plugins\' as prefix by default', () => {
+  it('should return \'dokuwiki\' as prefix by default', () => {
     const dokuwikiPlugin = createDokuWikiPlugin();
     const dokuwikiPluginPrefix = dokuwikiPlugin.prefix;
-    expect(dokuwikiPluginPrefix).to.match(/dokuwiki\/lib\/plugins/);
+    expect(dokuwikiPluginPrefix).to.match(/dokuwiki/);
   });
 
   it('should return \'dokuwiki/licenses\' as licenseDir by default', () => {
