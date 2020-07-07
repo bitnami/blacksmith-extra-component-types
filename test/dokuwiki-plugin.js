@@ -42,4 +42,10 @@ describe('DokuWiki Plugin', function() {
     const dokuwikiPluginPrefix = dokuwikiPlugin.prefix;
     expect(dokuwikiPluginPrefix).to.match(/dokuwiki\/lib\/plugins/);
   });
+
+  it('should return \'dokuwiki/licenses\' as licenseDir by default', () => {
+    const dokuwikiPlugin = createDokuWikiPlugin();
+    const dokuwikiPluginLicenseDir = dokuwikiPlugin.licenseDir;
+    expect(dokuwikiPluginLicenseDir).to.match(/dokuwiki\/licenses/);
+  });
 });

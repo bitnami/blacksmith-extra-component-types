@@ -37,9 +37,15 @@ describe('Drupal Plugin', function() {
     helpers.cleanTestEnv();
   });
 
-  it('should return \'drupal/lib/plugins\' as prefix by default', () => {
+  it('should return \'drupal\' as prefix by default', () => {
     const drupalPlugin = createDrupalPlugin();
     const drupalPluginPrefix = drupalPlugin.prefix;
-    expect(drupalPluginPrefix).to.match(/drupal\/lib\/plugins/);
+    expect(drupalPluginPrefix).to.match(/drupal/);
+  });
+
+  it('should return \'drupal/licenses\' as licenseDir by default', () => {
+    const drupalPlugin = createDrupalPlugin();
+    const drupalPluginLicenseDir = drupalPlugin.licenseDir;
+    expect(drupalPluginLicenseDir).to.match(/drupal\/licenses/);
   });
 });
