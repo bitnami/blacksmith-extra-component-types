@@ -9,7 +9,7 @@ const NodeApplication = require('./index');
  * @extends NodeApplication
  */
 class Node12Application extends NodeApplication {
-  nodeVersion() { return '12.16.3-1'; }
+  nodeVersion() { return '12.18.3-0'; }
 }
 
 module.exports = Node12Application;

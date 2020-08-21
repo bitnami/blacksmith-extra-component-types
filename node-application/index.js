@@ -36,7 +36,7 @@ class NodeApplication extends CompilableComponent {
    * @returns {String} Node version to build.
    */
   nodeVersion() {
-    return '10.20.1-3';
+    return '10.22.0-0';
   }
 
   /**
@@ -67,10 +67,10 @@ class NodeApplication extends CompilableComponent {
     const _additionalModules = this.additionalModules();
     const args = ['install', '--production'].concat(options.extraArgs);
     this.sandbox.runProgram(nfile.join(this.be.prefixDir, 'node/bin/npm'),
-                            args, {cwd: this.prefix});
+      args, {cwd: this.prefix});
     if (!_.isEmpty(_additionalModules)) {
       this.sandbox.runProgram(nfile.join(this.be.prefixDir, 'node/bin/npm'),
-                              _.flatten(['install', _additionalModules, '--save']), {cwd: this.prefix});
+        _.flatten(['install', _additionalModules, '--save']), {cwd: this.prefix});
     }
   }
 }
