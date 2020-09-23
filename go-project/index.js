@@ -19,7 +19,7 @@ class GoProject extends MakeComponent {
 
   getExportableEnvironmentVariables() {
     return {
-      PATH: `${process.env.PATH}:${this.goPath}/bin:${process.env.HOME}/go/bin:/usr/local/go/bin`,
+      PATH: `${process.env.PATH}:${this.goPath}/bin:${process.env.HOME}/go/bin:/usr/local/go-${this.goVersion}/bin`,
       GOPATH: this.goPath,
     };
   }
@@ -35,24 +35,30 @@ class GoProject extends MakeComponent {
     return [];
   }
 
+  get goBinaryPath() {
+    return `/usr/local/go-${this.goVersion}/bin/go`;
+  }
+
   get buildDependencies() {
+    const goDestFolder = `/usr/local/go-${this.goVersion}`;
     const goTar = `go${this.goVersion}.linux-amd64.tar.gz`;
-    const goGetCommands = this.goBuildDependencies.map((dep) => `/usr/local/go/bin/go get ${dep}`);
+    const goGetCommands = this.goBuildDependencies.map((dep) => `${goDestFolder}/bin/go get ${dep}`);
     const buildDependencies = [
       {
         type: 'go',
-        id: 'go',
+        id: `go-${this.goVersion}`,
         installCommands: [
           `curl https://dl.google.com/go/${goTar} -o ${goTar}`,
-          `tar -C /usr/local -xzf ${goTar}`,
+          `tar -C /usr/local/ -xzf ${goTar}`,
+          `mv /usr/local/go ${goDestFolder}`
         ].concat(goGetCommands),
       }
     ];
     this.goBuildDependencies.forEach((dep) => {
       buildDependencies.push({
         type: 'go',
-        id: `go-builddependency-${nfile.basename(dep)}`,
-        installCommands: [`/usr/local/go/bin/go get ${dep}`],
+        id: `go-${this.goVersion}-builddependency-${nfile.basename(dep)}`,
+        installCommands: [`${goDestFolder}/bin/go get ${dep}`],
       });
     });
     return buildDependencies;
