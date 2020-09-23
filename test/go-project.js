@@ -19,7 +19,7 @@ describe('GoProject', function() {
   it('should return its buildDependencies', () => {
     const component = new GoProject();
     expect(component.buildDependencies).not.to.be.empty;
-    expect(component.buildDependencies.filter(d => d.id === 'go')).not.to.be.empty;
+    expect(component.buildDependencies.filter(d => d.id.includes('go'))).not.to.be.empty;
   });
   it('builds a sample go project', () => {
     const log = {};
