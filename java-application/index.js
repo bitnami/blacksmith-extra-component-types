@@ -29,7 +29,7 @@ class JavaApplication extends MakeComponent {
         'type': 'buildtool',
         'id': 'maven',
         'installCommands': [
-          `curl https://apache-mirror.rbc.ru/pub/apache/maven/maven-3/${this.mavenVersion()}/binaries/${mavenTar}`,
+          `curl -LO https://apache-mirror.rbc.ru/pub/apache/maven/maven-3/${this.mavenVersion()}/binaries/${mavenTar}`,
           `tar -C /usr/local/ -xzf ${mavenTar}`
         ],
         'envVars': {
@@ -40,7 +40,7 @@ class JavaApplication extends MakeComponent {
         'type': 'buildtool',
         'id': 'ant',
         'installCommands': [
-          `curl https://apache-mirror.rbc.ru/pub/apache/ant/binaries/${antTar}`,
+          `curl -LO https://apache-mirror.rbc.ru/pub/apache/ant/binaries/${antTar}`,
           `tar -C /usr/local/ -xzf ${antTar}`
         ],
         'envVars': {
