@@ -38,7 +38,7 @@ class JavaApplication extends MakeComponent {
       },
       {
         'type': 'buildtool',
-        'id': 'maven',
+        'id': 'ant',
         'installCommands': [
           `curl https://apache-mirror.rbc.ru/pub/apache/ant/binaries/${antTar}`,
           `tar -C /usr/local/ -xzf ${antTar}`
