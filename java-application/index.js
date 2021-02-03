@@ -33,7 +33,7 @@ class JavaApplication extends MakeComponent {
           `tar -C /usr/local/ -xzf ${mavenTar}`
         ],
         'envVars': {
-          PATH: `$PATH:/usr/local/apache-maven-${this.mavenVersion()}`,
+          PATH: `$PATH:/usr/local/apache-maven-${this.mavenVersion()}/bin`,
         }
       },
       {
@@ -44,7 +44,7 @@ class JavaApplication extends MakeComponent {
           `tar -C /usr/local/ -xzf ${antTar}`
         ],
         'envVars': {
-          PATH: `$PATH:/usr/local/apache-ant-${this.antVersion()}`,
+          PATH: `$PATH:/usr/local/apache-ant-${this.antVersion()}/bin`,
         }
       }
     ];
