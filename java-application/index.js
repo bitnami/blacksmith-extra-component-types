@@ -23,7 +23,7 @@ class JavaApplication extends MakeComponent {
         'envVars': {
           PATH: '$PATH:/opt/bitnami/java/bin',
           JAVA_HOME: '/opt/bitnami/java/bin',
-        }
+        },
       },
       {
         'type': 'buildtool',
@@ -34,7 +34,7 @@ class JavaApplication extends MakeComponent {
         ],
         'envVars': {
           PATH: `$PATH:/usr/local/apache-maven-${this.mavenVersion()}/bin`,
-        }
+        },
       },
       {
         'type': 'buildtool',
@@ -45,8 +45,8 @@ class JavaApplication extends MakeComponent {
         ],
         'envVars': {
           PATH: `$PATH:/usr/local/apache-ant-${this.antVersion()}/bin`,
-        }
-      }
+        },
+      },
     ];
 
     return buildDependencies;
