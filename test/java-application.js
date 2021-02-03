@@ -22,8 +22,10 @@ describe('Java Application', function() {
   it('should return its buildDependencies', () => {
     const javaApplication = new JavaApplication();
     expect(_.map(_.filter(javaApplication.buildDependencies,
-      bd => !bd.version || bd.version === '9'), bd => bd.id)).to.be.eql([
-      'java', 'maven', 'ant']
+      bd => !bd.version || bd.version === '9'), bd => bd.id)).to.be.eql(
+      [
+        'java', 'maven', 'ant'
+      ]
     );
   });
   it('builds a sample java application', () => {
