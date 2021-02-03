@@ -9,6 +9,8 @@ class JavaApplication extends MakeComponent {
 
   antVersion() { return '1.10.9'; }
 
+  configure() {}
+
   get buildDependencies() {
     const mavenTar = `apache-maven-${this.mavenVersion()}-bin.tar.gz`;
     const antTar = `apache-ant-${this.antVersion()}-bin.tar.gz`;
