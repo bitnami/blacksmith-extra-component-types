@@ -22,7 +22,7 @@ class JavaApplication extends MakeComponent {
         'installCommands': [`bitnami-pkg install java-${this.javaVersion()}`],
         'envVars': {
           PATH: '$PATH:/opt/bitnami/java/bin',
-          JAVA_HOME: '/opt/bitnami/java/bin',
+          JAVA_HOME: '/opt/bitnami/java',
         },
       },
       {
