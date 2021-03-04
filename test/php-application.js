@@ -2,9 +2,9 @@
 
 const _ = require('lodash');
 const PHPApplication = require('../php-application');
-const PHP71Application = require('../php-application/php71');
-const PHP72Application = require('../php-application/php72');
 const PHP73Application = require('../php-application');
+const PHP74Application = require('../php-application/php74');
+const PHP80Application = require('../php-application/php80');
 const helpers = require('blacksmith/test/helpers');
 const nfile = require('nami-utils').file;
 const path = require('path');
@@ -93,51 +93,12 @@ describe('PHP Application', () => {
 
   it('should return its buildDependencies', () => {
     const phpApplication = createPHPComponent(PHPApplication);
-    const phpRuntimeDependencies = {
-      'debian-9': [
-        'libbz2-1.0', 'libc6', 'libcomerr2', 'libffi6', 'libfreetype6', 'libgcc1', 'libgcrypt20',
-        'libgmp10', 'libgnutls28-dev', 'libgpg-error0', 'libgssapi-krb5-2', 'libhogweed4',
-        'libidn11', 'libjpeg62-turbo', 'libk5crypto3', 'libkeyutils1', 'libkrb5-3', 'libkrb5support0',
-        'libldap-2.4-2', 'liblzma5', 'libmcrypt4', 'libncurses5', 'libp11-kit0',
-        'libpng-dev', 'libpq5', 'libreadline-dev', 'librtmp1', 'libsasl2-2', 'libssh2-1', 'libssl-dev', 'libstdc++6',
-        'libsybdb5', 'libtasn1-6', 'libtinfo5', 'libtidy-dev', 'libxml2', 'libxslt1.1', 'libzip-dev',
-        'nettle-dev', 'zlib1g', 'libcurl3', 'libicu57'
-      ],
-      'debian-10': [
-        'libbz2-1.0', 'libc6', 'libcomerr2', 'libffi6', 'libfreetype6', 'libgcc1', 'libgcrypt20',
-        'libgmp10', 'libgnutls28-dev', 'libgpg-error0', 'libgssapi-krb5-2', 'libhogweed4',
-        'libidn11', 'libjpeg62-turbo', 'libk5crypto3', 'libkeyutils1', 'libkrb5-3', 'libkrb5support0',
-        'libldap-2.4-2', 'liblzma5', 'libmcrypt4', 'libncurses5', 'libp11-kit0',
-        'libpng-dev', 'libpq5', 'libreadline-dev', 'librtmp1', 'libsasl2-2', 'libssh2-1', 'libssl-dev', 'libstdc++6',
-        'libsybdb5', 'libtasn1-6', 'libtinfo5', 'libtidy-dev', 'libxml2', 'libxslt1.1', 'libzip-dev',
-        'nettle-dev', 'zlib1g', 'libcurl4', 'libicu63'
-      ],
-      centos: [
-        'bzip2-libs', 'cyrus-sasl-lib', 'freetype', 'glibc', 'gmp', 'keyutils-libs', 'krb5-libs', 'libcom_err',
-        'libcurl', 'libgcc', 'libgcrypt', 'libgpg-error', 'libicu', 'libidn', 'libjpeg-turbo', 'libpng',
-        'libselinux', 'libssh2', 'libstdc++', 'libxml2', 'libxslt', 'ncurses-libs', 'nspr', 'nss', 'nss-softokn-freebl',
-        'nss-util', 'openldap', 'openssl-libs', 'pcre', 'postgresql-libs', 'readline', 'xz-libs', 'zlib',
-      ],
-    };
-    phpRuntimeDependencies.rhel = phpRuntimeDependencies.centos;
-    phpRuntimeDependencies.ol = phpRuntimeDependencies.centos.concat([
-      'libmcrypt-devel',
-      'freetds-devel',
-      'libtidy-devel',
-    ]);
 
     const getBuildDependencies = (deps, distro, version) => _.map(_.filter(deps, bd => bd.distro === distro &&
       (!version || !bd.version || version === bd.version)), bd => bd.id);
 
-    const phpBuildDependencies = {
-      'debian-9': getBuildDependencies(phpApplication.buildDependencies, 'debian', '9'),
-      'debian-10': getBuildDependencies(phpApplication.buildDependencies, 'debian', '10'),
-      centos: getBuildDependencies(phpApplication.buildDependencies, 'centos'),
-      rhel: getBuildDependencies(phpApplication.buildDependencies, 'rhel'),
-      ol: getBuildDependencies(phpApplication.buildDependencies, 'ol'),
-    };
-
-    expect(phpBuildDependencies).to.be.eql(phpRuntimeDependencies);
+    expect(getBuildDependencies(phpApplication.buildDependencies, 'debian', '10')).to.contain('libbz2-1.0');
+    expect(getBuildDependencies(phpApplication.buildDependencies, 'centos', '7')).to.contain('bzip2-libs');
   });
 
   it('installs files to the target directory', () => {
@@ -161,26 +122,26 @@ describe('PHP Application', () => {
   });
 });
 
-describe('PHP71 Application', function() {
-  it('should return its buildDependencies', () => {
-    const phpApplication = new PHP71Application();
-    const phpBuildDep = _.find(phpApplication.buildDependencies, bd => bd.id === 'php');
-    expect(phpBuildDep.installCommands[0]).to.match(/bitnami-pkg install php-7\.1\..*/);
-  });
-});
-
-describe('PHP72 Application', function() {
-  it('should return its buildDependencies', () => {
-    const phpApplication = new PHP72Application();
-    const phpBuildDep = _.find(phpApplication.buildDependencies, bd => bd.id === 'php');
-    expect(phpBuildDep.installCommands[0]).to.match(/bitnami-pkg install php-7\.2\..*/);
-  });
-});
-
 describe('PHP73 Application', function() {
   it('should return its buildDependencies', () => {
     const phpApplication = new PHP73Application();
     const phpBuildDep = _.find(phpApplication.buildDependencies, bd => bd.id === 'php');
     expect(phpBuildDep.installCommands[0]).to.match(/bitnami-pkg install php-7\.3\..*/);
+  });
+});
+
+describe('PHP74 Application', function() {
+  it('should return its buildDependencies', () => {
+    const phpApplication = new PHP74Application();
+    const phpBuildDep = _.find(phpApplication.buildDependencies, bd => bd.id === 'php');
+    expect(phpBuildDep.installCommands[0]).to.match(/bitnami-pkg install php-7\.4\..*/);
+  });
+});
+
+describe('PHP80 Application', function() {
+  it('should return its buildDependencies', () => {
+    const phpApplication = new PHP80Application();
+    const phpBuildDep = _.find(phpApplication.buildDependencies, bd => bd.id === 'php');
+    expect(phpBuildDep.installCommands[0]).to.match(/bitnami-pkg install php-8\.0\..*/);
   });
 });

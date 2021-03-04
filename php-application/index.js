@@ -24,20 +24,30 @@ class PHPApplication extends CompiledComponent {
 
     const systemPackages = {
       debian: [
+        'freetds-dev',
+        'libargon2-0-dev',
         'libbz2-1.0',
+        'libbz2-dev',
         'libc6',
         'libcomerr2',
+        'libcurl4-openssl-dev',
+        'libexpat1-dev',
+        'libfcgi-dev',
         'libffi6',
         'libfreetype6',
+        'libfreetype6-dev',
         'libgcc1',
         'libgcrypt20',
         'libgmp10',
+        'libgmp-dev',
         'libgnutls28-dev',
         'libgpg-error0',
         'libgssapi-krb5-2',
         'libhogweed4',
+        'libicu-dev',
         'libidn11',
         'libjpeg62-turbo',
+        'libjpeg-dev',
         'libk5crypto3',
         'libkeyutils1',
         'libkrb5-3',
@@ -46,19 +56,23 @@ class PHPApplication extends CompiledComponent {
         'liblzma5',
         'libmcrypt4',
         'libncurses5',
+        'libonig-dev',
         'libp11-kit0',
         'libpng-dev',
         'libpq5',
+        'libpq-dev',
         'libreadline-dev',
         'librtmp1',
         'libsasl2-2',
+        'libsodium-dev',
+        'libsqlite3-dev',
         'libssh2-1',
         'libssl-dev',
         'libstdc++6',
         'libsybdb5',
         'libtasn1-6',
-        'libtinfo5',
         'libtidy-dev',
+        'libtinfo5',
         'libxml2',
         'libxslt1.1',
         'libzip-dev',
@@ -66,25 +80,39 @@ class PHPApplication extends CompiledComponent {
         'zlib1g',
       ],
       centos: [
+        'bzip2-devel',
         'bzip2-libs',
         'cyrus-sasl-lib',
+        'expat-devel',
+        // 'fgci-devel', TODO: add EPEL
+        // 'freetds-devel', TODO: add EPEL
         'freetype',
+        'freetype-devel',
         'glibc',
         'gmp',
+        'gmp-devel',
         'keyutils-libs',
         'krb5-libs',
+        'libargon2-devel', // Needs EPEL
         'libcom_err',
         'libcurl',
+        'libcurl-devel',
         'libgcc',
         'libgcrypt',
         'libgpg-error',
         'libicu',
+        'libicu-devel',
         'libidn',
         'libjpeg-turbo',
+        'libjpeg-turbo-devel',
         'libpng',
+        'libpng-devel',
+        // 'libpqxx-dev' TODO: add EPEL
         'libselinux',
+        'libsodium-devel',
         'libssh2',
         'libstdc++',
+        // 'libtidy-devel', TODO: add EPEL
         'libxml2',
         'libxslt',
         'ncurses-libs',
@@ -92,11 +120,15 @@ class PHPApplication extends CompiledComponent {
         'nss',
         'nss-softokn-freebl',
         'nss-util',
+        'oniguruma-devel',
         'openldap',
+        'openssl',
         'openssl-libs',
         'pcre',
+        'postgresql-devel',
         'postgresql-libs',
         'readline',
+        'sqlite-devel',
         'xz-libs',
         'zlib',
       ],
@@ -149,7 +181,7 @@ class PHPApplication extends CompiledComponent {
    * @returns {String} PHP version to build.
    */
   get phpVersion() {
-    return '7.3.12-0';
+    return '7.3.27-0';
   }
 
   /**
@@ -168,7 +200,7 @@ class PHPApplication extends CompiledComponent {
   install() {
     if (nfile.exists(nfile.join(this.workingDir, 'composer.json'))) {
       const composerPath = nfile.join(this.be.prefixDir, 'php/bin/composer');
-      const opts = {cwd: this.workingDir, logger: this.logger};
+      const opts = {cwd: this.workingDir, logger: this.logger, env: {COMPOSER_MEMORY_LIMIT: '-1'}};
       const phpPath = nfile.join(this.be.prefixDir, 'php/bin/php');
       let cmdArgs = [composerPath, 'install'];
       if (this.composerInstallParameters.length) {
