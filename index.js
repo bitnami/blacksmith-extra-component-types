@@ -17,6 +17,7 @@ module.exports = {
   NodeApplication: require('./node-application'),
   PeclComponent: require('./pecl-component'),
   PHPApplication: require('./php-application'),
+  PHP73Application: require('./php-application'),
   PHP74Application: require('./php-application/php74'),
   PHP80Application: require('./php-application/php80'),
   Ruby24Application: require('./ruby-application'),
