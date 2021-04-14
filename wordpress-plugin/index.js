@@ -32,7 +32,7 @@ class WordPressPlugin extends CompiledComponent {
   install() {
     const pluginDest = nfile.join(this.prefix, 'wp-content', 'plugins');
     nfile.mkdir(pluginDest);
-    nfile.copy(nfile.join(this.srcDir, '*'), this.pluginDest);
+    nfile.copy(nfile.join(this.srcDir, '*'), pluginDest);
   }
 }
 
