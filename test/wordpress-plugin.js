@@ -37,9 +37,9 @@ describe('WordPress Plugin', function() {
     helpers.cleanTestEnv();
   });
 
-  it('should return \'wordpress/wp-content/plugins\' as prefix by default', () => {
+  it('should return \'wordpress\' as prefix by default', () => {
     const wordpressPlugin = createWordPressPlugin();
     const wordpressPluginPrefix = wordpressPlugin.prefix;
-    expect(wordpressPluginPrefix).to.match(/wordpress\/wp-content\/plugins/);
+    expect(wordpressPluginPrefix).to.match(/wordpress$/);
   });
 });
