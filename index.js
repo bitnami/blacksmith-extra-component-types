@@ -25,6 +25,5 @@ module.exports = {
   Ruby26Application: require('./ruby-application'),
   Ruby27Application: require('./ruby-application/ruby27'),
   Ruby30Application: require('./ruby-application/ruby30'),
-  RubyApplication: require('./ruby-application'),
   WordPressPlugin: require('./wordpress-plugin'),
 };
