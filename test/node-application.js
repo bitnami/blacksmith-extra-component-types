@@ -4,8 +4,9 @@ const _ = require('lodash');
 const NodeApplication = require('../node-application');
 const Node10Application = require('../node-application');
 const Node12Application = require('../node-application/node12');
-const Node13Application = require('../node-application/node13');
 const Node14Application = require('../node-application/node14');
+const Node15Application = require('../node-application/node15');
+const Node16Application = require('../node-application/node16');
 const path = require('path');
 const helpers = require('blacksmith/test/helpers');
 const chai = require('chai');
@@ -85,18 +86,26 @@ describe('Node12 Application', function() {
   });
 });
 
-describe('Node13 Application', function() {
-  it('should return its buildDependencies', () => {
-    const nodeApplication = new Node13Application();
-    const nodeBuildDep = _.find(nodeApplication.buildDependencies, bd => bd.id === 'node');
-    expect(nodeBuildDep.installCommands[0]).to.match(/bitnami-pkg install node-13\..*/);
-  });
-});
-
 describe('Node14 Application', function() {
   it('should return its buildDependencies', () => {
     const nodeApplication = new Node14Application();
     const nodeBuildDep = _.find(nodeApplication.buildDependencies, bd => bd.id === 'node');
     expect(nodeBuildDep.installCommands[0]).to.match(/bitnami-pkg install node-14\..*/);
+  });
+});
+
+describe('Node15 Application', function() {
+  it('should return its buildDependencies', () => {
+    const nodeApplication = new Node15Application();
+    const nodeBuildDep = _.find(nodeApplication.buildDependencies, bd => bd.id === 'node');
+    expect(nodeBuildDep.installCommands[0]).to.match(/bitnami-pkg install node-15\..*/);
+  });
+});
+
+describe('Node16 Application', function() {
+  it('should return its buildDependencies', () => {
+    const nodeApplication = new Node16Application();
+    const nodeBuildDep = _.find(nodeApplication.buildDependencies, bd => bd.id === 'node');
+    expect(nodeBuildDep.installCommands[0]).to.match(/bitnami-pkg install node-16\..*/);
   });
 });

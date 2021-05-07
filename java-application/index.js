@@ -2,8 +2,14 @@
 
 const MakeComponent = require('blacksmith/lib/base-components').MakeComponent;
 
+/**
+ * Class representing a Java Application
+ * @namespace BaseComponents.Java16Application
+ * @class
+ * @extends JavaApplication
+ */
 class JavaApplication extends MakeComponent {
-  javaVersion() { return '11.0.10-0'; }
+  javaVersion() { return '11.0.11-0'; }
 
   mavenVersion() { return '3.6.3'; }
 
