@@ -1,10 +1,9 @@
 'use strict';
 
 const RubyApplication = require('../ruby-application');
-const Ruby24Application = require('../ruby-application');
-const Ruby25Application = require('../ruby-application/ruby25');
-const Ruby26Application = require('../ruby-application/ruby26');
+const Ruby26Application = require('../ruby-application');
 const Ruby27Application = require('../ruby-application/ruby27');
+const Ruby30Application = require('../ruby-application/ruby30');
 
 const _ = require('lodash');
 const path = require('path');
@@ -89,22 +88,6 @@ describe('Ruby Application', function() {
   });
 });
 
-describe('Ruby24 Application', function() {
-  it('should return its buildDependencies', () => {
-    const rubyApplication = new Ruby24Application();
-    const rubyBuildDep = _.find(rubyApplication.buildDependencies, bd => bd.id === 'ruby');
-    expect(rubyBuildDep.installCommands[0]).to.match(/bitnami-pkg install ruby-2\.4\..*/);
-  });
-});
-
-describe('Ruby25 Application', function() {
-  it('should return its buildDependencies', () => {
-    const rubyApplication = new Ruby25Application();
-    const rubyBuildDep = _.find(rubyApplication.buildDependencies, bd => bd.id === 'ruby');
-    expect(rubyBuildDep.installCommands[0]).to.match(/bitnami-pkg install ruby-2\.5\..*/);
-  });
-});
-
 describe('Ruby26 Application', function() {
   it('should return its buildDependencies', () => {
     const rubyApplication = new Ruby26Application();
@@ -118,5 +101,13 @@ describe('Ruby27 Application', function() {
     const rubyApplication = new Ruby27Application();
     const rubyBuildDep = _.find(rubyApplication.buildDependencies, bd => bd.id === 'ruby');
     expect(rubyBuildDep.installCommands[0]).to.match(/bitnami-pkg install ruby-2\.7\..*/);
+  });
+});
+
+describe('Ruby30 Application', function() {
+  it('should return its buildDependencies', () => {
+    const rubyApplication = new Ruby30Application();
+    const rubyBuildDep = _.find(rubyApplication.buildDependencies, bd => bd.id === 'ruby');
+    expect(rubyBuildDep.installCommands[0]).to.match(/bitnami-pkg install ruby-3\.0\..*/);
   });
 });

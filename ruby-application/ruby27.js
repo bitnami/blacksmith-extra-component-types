@@ -3,13 +3,13 @@
 const RubyApplication = require('./index');
 
 /**
- * Class representing a ruby Application for versions 2.7.X
- * @namespace BaseComponents.Ruby21Application
+ * Class representing a Ruby Application for versions 2.7.X
+ * @namespace BaseComponents.Ruby27Application
  * @class
- * @extends rubyApplication
+ * @extends RubyApplication
  */
 class Ruby27Application extends RubyApplication {
-  rubyVersion() { return '2.7.1-0'; }
+  rubyVersion() { return '2.7.3-0'; }
 }
 
 module.exports = Ruby27Application;

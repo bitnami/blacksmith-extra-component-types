@@ -3,7 +3,7 @@
 const _ = require('lodash');
 const JavaApplication = require('../java-application');
 const Java8Application = require('../java-application/java8');
-const Java15Application = require('../java-application/java15');
+const Java16Application = require('../java-application/java16');
 const path = require('path');
 const helpers = require('blacksmith/test/helpers');
 const chai = require('chai');
@@ -79,10 +79,10 @@ describe('Java8 Application', function() {
   });
 });
 
-describe('Java15 Application', function() {
+describe('Java16 Application', function() {
   it('should return its buildDependencies', () => {
-    const javaApplication = new Java15Application();
+    const javaApplication = new Java16Application();
     const javaBuildDep = _.find(javaApplication.buildDependencies, bd => bd.id === 'java');
-    expect(javaBuildDep.installCommands[0]).to.match(/bitnami-pkg install java-15\..*/);
+    expect(javaBuildDep.installCommands[0]).to.match(/bitnami-pkg install java-16\..*/);
   });
 });
