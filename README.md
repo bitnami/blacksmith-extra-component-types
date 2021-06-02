@@ -1,4 +1,4 @@
-[![Build Status](https://api.travis-ci.org/bitnami/blacksmith-extra-component-types.svg?branch=master)](http://travis-ci.org/bitnami/blacksmith-extra-component-types)
+[![Build Status](https://github.com/bitnami/blacksmith-extra-component-types/actions/workflows/main.yml/badge.svg)](https://github.com/bitnami/blacksmith-extra-component-types/actions/workflows/main.yml)
 
 # Blacksmith Extra Component Types
 
