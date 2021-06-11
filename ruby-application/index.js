@@ -98,7 +98,7 @@ class RubyApplication extends CompilableComponent {
     if (options.installPassenger) {
       // Passenger first boot to download agent and Nginx
       this.sandbox.runProgram(nfile.join(this.be.prefixDir, 'ruby/bin/bundle'), ['exec', 'passenger', 'start'], {
-        env: {PATH: `${process.env.PATH}:${nfile.join(this.srcDir, 'ruby/bin')}`},
+        env: {PATH: `${process.env.PATH}:${nfile.join(this.be.prefixDir, 'ruby/bin')}`},
         runInBackground: true, cwd: this.srcDir});
       const logFile = nfile.join(this.srcDir, 'log/passenger.3000.log');
       let started = false;
