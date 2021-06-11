@@ -63,6 +63,7 @@ describe('Ruby Application', function() {
     rubyApplication.patch();
     rubyApplication.postExtract();
     rubyApplication.build();
+    rubyApplication.install();
     expect(path.join(path.join(test.prefix, component.id, 'Gemfile'))).to.be.a.file();
     expect(path.join(path.join(test.prefix, component.id, 'config/database.yml.example'))).to.not.be.a.path();
     expect(path.join(path.join(test.prefix, component.id, 'config/database.yml'))).to.be.a.file();
@@ -72,7 +73,6 @@ describe('Ruby Application', function() {
       path.join(test.prefix, component.id, 'log/passenger.3000.log'), // Simulate passenger log
       'Passenger core online'
     );
-    rubyApplication.install();
     expect(log.text).to.contain('"install" "--binstubs" "--without" "development" "sqlite" "test" "--no-deployment"');
     expect(log.text).to.contain('"install" "--binstubs" "--without" "development" "sqlite" "test" "--deployment"');
     expect(log.text).to.contain('"exec" "passenger" "start"');
