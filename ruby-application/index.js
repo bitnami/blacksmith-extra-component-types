@@ -49,17 +49,15 @@ class RubyApplication extends CompilableComponent {
   }
 
   /**
-   * Create prefix and copy source files
+   * Create database.yaml file
    * @function RubyApplication~build
    */
   build() {
-    nfile.mkdir(this.prefix);
-    nfile.copy(nfile.join(this.srcDir, '*'), this.prefix);
-    if (nfile.exists(nfile.join(this.prefix, 'config/database.yml.example')) &&
-    !nfile.exists(nfile.join(this.prefix, 'config/database.yml'))) {
+    if (nfile.exists(nfile.join(this.srcDir, 'config/database.yml.example')) &&
+    !nfile.exists(nfile.join(this.srcDir, 'config/database.yml'))) {
       nfile.rename(
-          nfile.join(this.prefix, 'config/database.yml.example'),
-          nfile.join(this.prefix, 'config/database.yml'));
+          nfile.join(this.srcDir, 'config/database.yml.example'),
+          nfile.join(this.srcDir, 'config/database.yml'));
     }
   }
   getEnvVariables() {
@@ -85,24 +83,24 @@ class RubyApplication extends CompilableComponent {
   install(options) {
     options = _.defaults(options || {}, {installPassenger: true, exclude: ['development', 'sqlite', 'test']});
     const _additionalGems = this.additionalGems();
-    if (!nfile.contains(nfile.join(this.prefix, 'Gemfile'), 'passenger') && options.installPassenger) {
+    if (!nfile.contains(nfile.join(this.srcDir, 'Gemfile'), 'passenger') && options.installPassenger) {
       _additionalGems.push('passenger');
     }
     if (!_.isEmpty(_additionalGems)) {
-      nfile.puts(nfile.join(this.prefix, 'Gemfile'), _.map(_additionalGems, gem => `gem "${gem}"`).join('\n'),
+      nfile.puts(nfile.join(this.srcDir, 'Gemfile'), _.map(_additionalGems, gem => `gem "${gem}"`).join('\n'),
       {atNewLine: true});
     }
     const args = ['install', '--binstubs', '--without'].concat(options.exclude);
     this.sandbox.runProgram(nfile.join(this.be.prefixDir, 'ruby/bin/bundle'),
-                                         args.concat('--no-deployment'), {cwd: this.prefix});
+                                         args.concat('--no-deployment'), {cwd: this.srcDir});
     this.sandbox.runProgram(nfile.join(this.be.prefixDir, 'ruby/bin/bundle'),
-                                         args.concat(['--deployment', '--path=vendor/bundle']), {cwd: this.prefix});
+                                         args.concat(['--deployment', '--path=vendor/bundle']), {cwd: this.srcDir});
     if (options.installPassenger) {
       // Passenger first boot to download agent and Nginx
       this.sandbox.runProgram(nfile.join(this.be.prefixDir, 'ruby/bin/bundle'), ['exec', 'passenger', 'start'], {
-        env: {PATH: `${process.env.PATH}:${nfile.join(this.be.prefixDir, 'ruby/bin')}`},
-        runInBackground: true, cwd: this.prefix});
-      const logFile = nfile.join(this.prefix, 'log/passenger.3000.log');
+        env: {PATH: `${process.env.PATH}:${nfile.join(this.srcDir, 'ruby/bin')}`},
+        runInBackground: true, cwd: this.srcDir});
+      const logFile = nfile.join(this.srcDir, 'log/passenger.3000.log');
       let started = false;
       const timeout = 20;
       let cont = 0;
@@ -115,8 +113,10 @@ class RubyApplication extends CompilableComponent {
       }
       if (!started) throw new Error('Passenger failed to start');
       this.sandbox.runProgram(nfile.join(this.be.prefixDir, 'ruby/bin/bundle'), ['exec', 'passenger', 'stop'], {
-        env: {PATH: `${process.env.PATH}:${nfile.join(this.be.prefixDir, 'ruby/bin')}`}, cwd: this.prefix});
+        env: {PATH: `${process.env.PATH}:${nfile.join(this.be.prefixDir, 'ruby/bin')}`}, cwd: this.srcDir});
     }
+    nfile.mkdir(this.prefix);
+    nfile.copy(nfile.join(this.srcDir, '*'), this.prefix);
   }
   /**
    * Additionally remove log files and Ruby cache
@@ -124,10 +124,13 @@ class RubyApplication extends CompilableComponent {
    */
   minify() {
     super.minify();
+    nfile.delete(nfile.join(this.srcDir, 'log/*'));
     nfile.delete(nfile.join(this.prefix, 'log/*'));
+    nfile.delete(nfile.join(this.srcDir, 'vendor/bundle/ruby/*/cache'));
     nfile.delete(nfile.join(this.prefix, 'vendor/bundle/ruby/*/cache'));
     // Delete unnecesary folders from ruby gems with precompiled binaries for unsupported platforms
     _.forEach(['darwin*', 'freebsd*', 'openbsd*', 'linux-i686', 'linux/i686'], value => {
+      nfile.delete(nfile.join([this.srcDir, 'vendor/bundle/ruby/*/gems/*/vendor/', value]));
       nfile.delete(nfile.join([this.prefix, 'vendor/bundle/ruby/*/gems/*/vendor/', value]));
     });
   }
