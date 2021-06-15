@@ -181,7 +181,7 @@ class PHPApplication extends CompiledComponent {
    * @returns {String} PHP version to build.
    */
   get phpVersion() {
-    return '7.3.27-0';
+    return '7.3.28-1';
   }
 
   /**

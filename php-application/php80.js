@@ -10,7 +10,7 @@ const PHPApplication = require('./index');
  */
 class PHP80Application extends PHPApplication {
   get phpVersion() {
-    return '8.0.2-0';
+    return '8.0.7-1';
   }
 }
 
