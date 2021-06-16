@@ -43,7 +43,7 @@ class RubyApplication extends CompilableComponent {
     return nfile.glob(nfile.join(this.prefix, 'lib/ruby/gems/*/gems'))
       .concat(nfile.glob(nfile.join(this.prefix, 'vendor/bundle/ruby/*/gems')));
   }
-  
+
   /**
    * Ruby version to build
    * @function RubyApplication~rubyVersion
