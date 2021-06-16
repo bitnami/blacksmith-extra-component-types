@@ -30,6 +30,11 @@ class NodeApplication extends CompilableComponent {
     }));
   }
 
+  get depsDir() {
+    return [nfile.join(this.prefix, `lib/node_modules/${this.id.toLowerCase()}/node_modules`),
+            nfile.join(this.prefix, 'node_modules')];
+  }
+
   /**
    * Node version to build
    * @function NodeApplication~nodeVersion
