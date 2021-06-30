@@ -17,6 +17,10 @@ class GoProject extends MakeComponent {
     return nfile.join(this.goPath, 'src', this.goImportPrefix);
   }
 
+  get depsDir() {
+    return [nfile.join(this.prefix, '../go-app-scan-config')];
+  }
+
   getExportableEnvironmentVariables() {
     return {
       PATH: `${process.env.PATH}:${this.goPath}/bin:${process.env.HOME}/go/bin:/usr/local/go-${this.goVersion}/bin`,
