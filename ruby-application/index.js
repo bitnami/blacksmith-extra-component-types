@@ -41,7 +41,7 @@ class RubyApplication extends CompilableComponent {
 
   get depsDir() {
     return nfile.glob(nfile.join(this.prefix, 'lib/ruby/gems/*/gems'))
-      .concat(nfile.glob(nfile.join(this.prefix, 'vendor/bundle/ruby/*/gems')));
+      .concat(nfile.glob(nfile.join(this.prefix, 'vendor')));
   }
 
   /**
