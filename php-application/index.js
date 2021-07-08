@@ -73,6 +73,7 @@ class PHPApplication extends CompiledComponent {
         'libtasn1-6',
         'libtidy-dev',
         'libtinfo5',
+        'libwebp-dev',
         'libxml2',
         'libxslt1.1',
         'libzip-dev',
@@ -113,6 +114,7 @@ class PHPApplication extends CompiledComponent {
         'libssh2',
         'libstdc++',
         // 'libtidy-devel', TODO: add EPEL
+        'libwebp-devel',
         'libxml2',
         'libxslt',
         'ncurses-libs',
