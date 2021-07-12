@@ -39,9 +39,12 @@ class RubyApplication extends CompilableComponent {
     }));
   }
 
-  get depsDir() {
-    return nfile.glob(nfile.join(this.prefix, 'lib/ruby/gems/*/gems'))
-      .concat(nfile.glob(nfile.join(this.prefix, 'vendor/bundle/ruby/*/gems')));
+  copyComponentsWithDependencies() {
+    const srcAndDepsDir = nfile.join(this.be.sandboxDir,
+                                     `components-with-deps/${this.id.toLowerCase()}-${this.version}`);
+    nfile.mkdir(srcAndDepsDir);
+    // Copy output code
+    nfile.copy(`${this.prefix}/*`, srcAndDepsDir, {exclude: this.excludeDir});
   }
 
   /**
